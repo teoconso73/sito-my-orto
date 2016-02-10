@@ -1,5 +1,7 @@
 <?php
-session_start();
+if(session_id() == '') {
+    session_start();
+}
 //include("/assets/PHP/DB_connect.php");
 //include("/assets/PHP/login.php");
 //include("/assets/PHP/recupero_psw.php");
@@ -66,7 +68,7 @@ echo '<font color="red" size="2">Email inesistente nei nostri archivi!</font>';
 </span>
 </label>
 </a> 
-<button class="btn btn-theme btn-block" href="index.php" type="submit"><i class="fa fa-lock"></i> LOG IN</button>
+<button class="btn btn-theme btn-block"  type="submit"><i class="fa fa-lock"></i> LOG IN</button>
 </form>
 <hr>
 <div style="text-align: center"
