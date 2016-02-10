@@ -1,8 +1,8 @@
 <?php
 session_start();
 //include("/assets/PHP/DB_connect.php");
-include("/assets/PHP/login.php");
-include("/assets/PHP/recupero_psw.php");
+//include("/assets/PHP/login.php");
+//include("/assets/PHP/recupero_psw.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,12 +49,12 @@ if(isset($_GET['error']))
 echo '<br>';  
 echo '<font color="red" size="3">Username o password errati!</font>';
 }
-if(($_GET['recpsw']==1))   //if(isset($_GET['recpsw']))
+if(isset($_GET['recpsw']) && $_GET['recpsw']==1)  //if(isset($_GET['recpsw']))
 {
 echo '<br>';  
 echo '<font color="grey" size="2">Ti è stata inviata una mail per il recupero della password</font>';
 }
-if(($_GET['recpsw']==2))
+if(isset($_GET['recpsw']) && $_GET['recpsw']==2)
 {
 echo '<br>';  
 echo '<font color="red" size="2">Email inesistente nei nostri archivi!</font>';
