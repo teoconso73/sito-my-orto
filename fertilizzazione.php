@@ -326,25 +326,58 @@ header('Location: /login.php');
 
               <div class="row"></div> 
               <center>
-              <h2>IRRIGAZIONE A GOCCIA </h2>
+              <h2>FERTILIZZAZIONE </h2>
               </center>
               <br>
               <br>
                 
-           <strong>Un altro modo molto efficace di irrigare l'orto è tramite il sistema a goccia, in quanto permette di somministrare l'acqua alle piante direttamente
-           sulle loro radici; inoltre è anche piuttosto comodo poiché tale sistema è dotato di un pratico timer, con il quale si possono facilmente programmare gli 
-           orari delle irrigazioni, risparmiando tempo e fatica. Anche in questo caso è possibile realizzarlo senza l'ausilio di personale esperto. 
-           Occorrerà acquistare il kit in un negozio specializzato di bricolage o di giardinaggio. Esso comprende un lungo tubo di plastica flessibile, generalmente di
-           una sessantina di metri e i raccordi per fissarlo e personalizzarlo in base alle diverse esigenze. Ad una estremità del tubo andrà poi installato un 
-           dispositivo a cipolla che trasformerà il getto dell'acqua in una pioggerella leggera. Se le istruzioni allegate verranno eseguite correttamente, l'opera di 
-           montaggio dovrebbe concludersi nell'arco di un paio di ore. Se lo si desidera, è possibile sistemare il tubo sottoterra per migliorare l'aspetto estetico 
-           dell'orto e guadagnare spazio ulteriore. L'impianto a goccia si rivela comodo anche perchè è possibile una sua precisa pianificazione, grazie al timer che
-           permette di far partire la sessione irrigatoria e di spegnerla automaticamente. L'acqua erogata cadrà goccia a goccia sul terreno in cui sono seminate le
-           piante, fornendo una irrigazione lenta e profonda. A seconda del clima presente nella zona geografica, andranno effettuate innaffiature da una a due volte
-           la settimana, meglio al mattino presto, per un maggior beneficio degli ortaggi. Uno dei problemi più frequenti di questo tipo di impianto riguarda gli ugelli,
-           che a volte si intasano a causa di residui di sabbia o terreno. Basterà però togliere i detriti da queste sezioni per un corretto funzionamento dell'impianto.
-           Sarà inoltre necessario lavare periodicamente il sistema a goccia svitando l'estremità tappata del tubo, così da permettere all'acqua di defluire liberamente 
-           e far scorrere qualsiasi residuato.
+              <strong>
+Per fertilizzazione s'intende l'apporto di un materiale di qualsiasi natura, detto fertilizzante, con lo scopo di migliorare uno o più aspetti della fertilità del terreno. Dal punto di vista tecnico, i fertilizzanti sono distinti in tre categorie, in funzione del tipo di fertilità con cui interagiscono.<br>
+
+_Gli ammendanti sono quei fertilizzanti che migliorano le proprietà fisiche del terreno e, attraverso queste, influenzano le proprietà chimiche e quelle biologiche. È perciò da considerarsi ammendante un materiale che equilibri una tessitura anomala o che conferisca struttura ad un terreno incoerente o che ne migliori lo stato strutturale stabilizzandolo. Ad esempio, sono da considerarsi ammendanti, nel contesto specifico, i seguenti materiali:<br>
+
+materiali argillosi, limitatamente all'apporto in terreni sabbiosi (azione equilibrante sulla tessitura);<br>
+
+Sabbia, limitatamente all'apporto in terreni argillosi (azione equilibrante sulla tessitura);<br>
+
+letame o altro materiale organico che incrementi il tenore di humus nel terreno (azione migliorativa e stabilizzante sulla struttura).<br>
+
+_I correttivi sono quei fertilizzanti che migliorano la reazione del terreno spostando il pH da valori anomali verso la neutralità. Potenzialmente hanno azione correttiva tutti quei materiali che sono costituzionalmente o fisiologicamente acidi o alcalini. Sono tradizionalmente considerati correttivi la calce e il calcare nei terreni a reazione acida, e lo zolfo[1] e il gesso nei terreni basici con alcalinità costituzionale (terreni calcarei). L'efficacia dei correttivi è condizionata da vari fattori:<br>
+
+1)Comportamento chimico dei componenti prevalenti. In questo caso è fondamentale la composizione del correttivo e la natura chimica dei suoi componenti: le basi e gli acidi hanno un'azione correttiva più efficace dei sali, la cui azione è fondamentalmente dovuta a fenomeni di idrolisi salina o di assorbimento selettivo da parte delle piante (materiali fisiologicamente acidi o basici). Ad esempio, la calce e lo zolfo hanno un'azione correttiva più efficace, rispettivamente, del calcare e del gesso.<br>
+                  
+2)Grado di finezza del materiale. Il grado di finezza ha riflessi sulla superficie di sviluppo ed è di particolare importanza per i correttivi rappresentati da sali poco solubili come il calcare e il gesso. Questi materiali, infatti, hanno un'efficacia relativa, come correttivi, solo se finemente macinati, mentre la frantumazione grossolana li rende sostanzialmente inerti.<br>
+                  
+3)Potere tampone del terreno. Il complesso di scambio del terreno e, in misura minore, la composizione della frazione minerale della soluzione circolante hanno un'intrinseco potere tamponante che tende a compensare le variazioni di pH. Il potere tampone si manifesta in maniera più intensa proprio nei confronti degli interventi correttivi, in ogni caso varia in funzione delle cause che sono alla base della reazione anomale.<br>
+                  
+L'opportunità di un intervento correttivo è determinata dalle reali necessità, dalla sostenibilità economica e dall'efficacia intrinseca dell'intervento, soprattutto in relazione al potere tampone del terreno. Il concorso di questi fattori rende varia notevolmente secondo il contesto:<br>
+
+Terreni sodici. I terreni con alcalinità di assorbimento, dovuta ad un eccesso di sodio nel complesso di scambio e di sali di sodio a idrolisi alcalina nella soluzione circolante (carbonato di sodio e bicarbonato di sodio), presentano problemi agronomici tali da rendere poco opportuna, se non del tutto sconveniente, la correzione. La scarsa vocazione agronomica è infatti dovuta agli effetti negativi del sodio sulla struttura del terreno, che prevalgono sull'interferenza, da parte del pH, con la nutrizione minerale delle piante.<br>
+                  
+Terreni calcarei. I terreni con alcalinità costituzionale, dovuta ad un eccesso di calcare attivo possono essere corretti con l'apporto di zolfo o di gesso, con efficacia subordinata all'effettivo potere tampone del terreno. I correttivi acidificanti hanno un costo relativamente alto che difficilmente può essere compensato dalla remuneratività dei benefici della correzione. Va anche precisato che i terreni calcarei possono offrire buone prestazioni di produttività con un'adeguata scelta delle colture (specie agraria, cultivar, portinnesto) e con l'adozione di opportuni accorgimenti agronomici.<br>
+                  
+Terreni acidi. In questi terreni la reazione anomala rappresenta il principale fattore limitante in quanto interferisce negativamente sulla nutrizione minerale, sia per la carenza di basi (in particolare il calcio), sia per l'insolubilizzazione del fosforo. In subordine all'effetto tampone, i terreni acidi sono perciò quelli che rispondono meglio alla correzione del pH.<br>
+
+_Sono concimi quei fertilizzanti che migliorano la dotazione del terreno in uno o più elementi della fertilità. Questi fertilizzanti sono perciò apportati al fine di aumentare la dotazione di un terreno povero (concimazione di fondo) o per soddisfare i fabbisogni nutritivi di una coltura senza incorrere nel depauperamento della fertilità del suolo (concimazione ordinaria di produzione).<br>
+
+I concimi sono i fertilizzanti di maggior impiego in agricoltura e il loro impiego si rende necessario soprattutto in un'agricoltura di tipo intensivo, volta ad ottenere rese unitarie elevate. In altre condizioni, il mancato ricorso alla concimazione comporta un lento ma progressivo impoverimento del terreno, che in tempi più o meno lunghi va incontro a fenomeni di insterilimento. Questo problema è particolarmente sentito nelle aree tropicali dei paesi in via di sviluppo, dove la messa a coltura dei terreni naturali, in assenza di interventi di fertilizzazione, intensifica il processo della desertificazione a causa del modesto potere assorbente del terreno e del dilavamento degli elementi nutritivi nei climi piovosi.<br>
+
+I concimi si classificano principalmente in funzione dell'origine del materiale e della composizione chimica, con riferimento al contenuto in uno o più elementi principali della fertilità (azoto, fosforo, potassio).<br>
+
+In base al primo criterio, i concimi sono distinti in tre categorie:<br>
+
+1)Concimi organici. Sono materiali di origine biologica, animale o vegetale, utilizzati tali e quali o opportunamente trattati. Sono concimi organici, ad esempio, il letame, il compost, la pollina, ecc.
+Concimi minerali o chimici. Sono materiali ottenuti da una sintesi chimica in un processo industriale (es. l'urea) oppure dall'estrazione con eventuale trattamento industriale (es. il perfosfato minerale, il cloruro di potassio).<br>
+                  
+2)Concimi organominerali. Sono materiali ottenuti dalla miscelazione di concimi organici con concimi chimici o dal trattamento di materiali organici con agenti chimici.<br>
+                  
+In base al secondo criterio, applicato fondamentalmente per i concimi chimici, i concimi sono così classificati:<br>
+
+1)Concimi ternari: contengono i tre macroelementi principali della fertilità (NPK).<br>
+                  
+2)Concimi binari: contengono solo due macroelementi principali della fertilità. Si distinguono in azoto-potassici (NK), azoto-fosfatici (NP) e fosfopotassici (PK).<br>
+                  
+3)Concimi semplici: contengono un solo macroelemento principale della fertilità, associato eventualmente ad uno o più macroelementi secondari (calcio, zolfo, magnesio) o a microlementi (ferro, rame, boro, ecc.). Si distinguono in azotati, fosfatici e potassici.
  </strong>
   <center>
   <br>
