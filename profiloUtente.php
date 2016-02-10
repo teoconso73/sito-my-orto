@@ -1,9 +1,9 @@
 <?php
 session_start();
-include("/assets/PHP/login.php"); 
+//include("/assets/PHP/login.php"); 
 //include("/assets/PHP/DB_connect.php")
 if($_SESSION['logged']==false)
-header('Location: /login.php');
+header('Location: login.php');
 ?>
 <!DOCTYPE html> 
 <html lang="en">
