@@ -209,7 +209,7 @@ header('Location: login.php');
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
 			  <?php
-              $connessione_al_server=mysql_connect("localhost","project0101","admin");
+             $connessione_al_server=mysql_connect("localhost","root","");
 			  mysql_select_db("my_project0101",$connessione_al_server);
               $iduser=$_SESSION['ID_utente']; //oppure $_SESSION['ID_UTENTE']  ISSET..... S SESSION ID UTENTE è DA SETTARE NELL ALTRO FILe(DI LOGIN) O IL FILE CHE SARà
               $sql=mysql_query("SELECT * FROM users WHERE ID_utente='$iduser'")or DIE('query non riuscita'.mysql_error());

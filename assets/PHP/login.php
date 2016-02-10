@@ -21,10 +21,10 @@ if(mysql_num_rows($utente)==1)
 $row1=mysql_fetch_assoc($utente);
 $name=$row1['ID_utente'];
 $_SESSION['ID_utente']=$name;
-header('location: http://project0101.altervista.org/index.php'); // e mando per esempio ad una pagina esempio.php// in questo caso rimanderò ad una pagina prova.php
+header('location: /Progetto/index.php'); // e mando per esempio ad una pagina esempio.php// in questo caso rimanderò ad una pagina prova.php
 }
 else     
 {
-header('location: http://project0101.altervista.org/login.php?error=1');
+header('location: /Progetto/login.php?error=1');
 }
 ?>

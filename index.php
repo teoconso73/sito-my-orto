@@ -216,7 +216,7 @@ header('Location: login.php');
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
 			  <?php
-            $connessione_al_server=mysql_connect("localhost","root","");
+              $connessione_al_server=mysql_connect("localhost","root","");
 			  mysql_select_db("my_project0101",$connessione_al_server);
               $iduser=$_SESSION['ID_utente']; //oppure $_SESSION['ID_UTENTE']  ISSET..... S SESSION ID UTENTE è DA SETTARE NELL ALTRO FILe(DI LOGIN) O IL FILE CHE SARà
               $sql=mysql_query("SELECT * FROM users WHERE ID_utente='$iduser'")or DIE('query non riuscita'.mysql_error());
@@ -307,6 +307,7 @@ header('Location: login.php');
                           <li><a  href="Irrigazione.php">Irrigazione</a></li>
                           <li><a  href="Fertilizzazione.php">Fertlizzazione</a></li>
                           <li><a  href="Proprieta_ortaggi.php">Propietà ortaggi</a></li>
+                          
                           <li><a  href="Accessori_utili.php">Accessori utili</a></li>
                       </ul>
                   </li>
@@ -324,33 +325,10 @@ header('Location: login.php');
       <section id="main-content">
           <section class="wrapper">
 
-              <div class="row"></div> 
-              <center>
-              <h2>IRRIGAZIONE A GOCCIA </h2>
-              </center>
-              <br>
-              <br>
-                
-           <strong>Un altro modo molto efficace di irrigare l'orto è tramite il sistema a goccia, in quanto permette di somministrare l'acqua alle piante direttamente
-           sulle loro radici; inoltre è anche piuttosto comodo poiché tale sistema è dotato di un pratico timer, con il quale si possono facilmente programmare gli 
-           orari delle irrigazioni, risparmiando tempo e fatica. Anche in questo caso è possibile realizzarlo senza l'ausilio di personale esperto. 
-           Occorrerà acquistare il kit in un negozio specializzato di bricolage o di giardinaggio. Esso comprende un lungo tubo di plastica flessibile, generalmente di
-           una sessantina di metri e i raccordi per fissarlo e personalizzarlo in base alle diverse esigenze. Ad una estremità del tubo andrà poi installato un 
-           dispositivo a cipolla che trasformerà il getto dell'acqua in una pioggerella leggera. Se le istruzioni allegate verranno eseguite correttamente, l'opera di 
-           montaggio dovrebbe concludersi nell'arco di un paio di ore. Se lo si desidera, è possibile sistemare il tubo sottoterra per migliorare l'aspetto estetico 
-           dell'orto e guadagnare spazio ulteriore. L'impianto a goccia si rivela comodo anche perchè è possibile una sua precisa pianificazione, grazie al timer che
-           permette di far partire la sessione irrigatoria e di spegnerla automaticamente. L'acqua erogata cadrà goccia a goccia sul terreno in cui sono seminate le
-           piante, fornendo una irrigazione lenta e profonda. A seconda del clima presente nella zona geografica, andranno effettuate innaffiature da una a due volte
-           la settimana, meglio al mattino presto, per un maggior beneficio degli ortaggi. Uno dei problemi più frequenti di questo tipo di impianto riguarda gli ugelli,
-           che a volte si intasano a causa di residui di sabbia o terreno. Basterà però togliere i detriti da queste sezioni per un corretto funzionamento dell'impianto.
-           Sarà inoltre necessario lavare periodicamente il sistema a goccia svitando l'estremità tappata del tubo, così da permettere all'acqua di defluire liberamente 
-           e far scorrere qualsiasi residuato.
- </strong>
-  <center>
-  <br>
-  <br>
- <img src="./assets/img/irrigazione-a-goccia.jpg" width=400; height=300; >
-          </center>        	
+              <div class="row"></div>  
+                 
+                  
+                  	
 					
                  
                   

@@ -1,10 +1,10 @@
 <?php
 session_start();
 //include("/assets/PHP/DB_connect.php");
-include("/assets/PHP/login.php");
-include("/assets/PHP/login_lockscreen.php");
+//include("/assets/PHP/login.php");
+//include("/assets/PHP/login_lockscreen.php");
 if($_SESSION['logged']==false)
-header('Location: /login.php');
+header('Location: login.php');
 
 
 ?>
@@ -71,7 +71,7 @@ echo '<font color="red" size="5">Password errata!</font>';
 				                      </div>
 				                      <div class="modal-body">
 				                          <?php
-                                              $connessione_al_server=mysql_connect("localhost","project0101","admin");
+                                              $connessione_al_server=mysql_connect("localhost","root","");
 			  mysql_select_db("my_project0101",$connessione_al_server);
               $iduser=$_SESSION['ID_utente']; //oppure $_SESSION['ID_UTENTE']  ISSET..... S SESSION ID UTENTE è DA SETTARE NELL ALTRO FILe(DI LOGIN) O IL FILE CHE SARà
               $sql=mysql_query("SELECT * FROM users WHERE ID_utente='$iduser'")or DIE('query non riuscita'.mysql_error());
