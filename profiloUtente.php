@@ -310,7 +310,7 @@ header('Location: login.php');
           	<div class="contenitori-utente">
             
 			<?php
-              $connessione_al_server=mysql_connect("localhost","project0101","admin");
+              $connessione_al_server=mysql_connect("localhost","root","");
 			  mysql_select_db("my_project0101",$connessione_al_server);
               $iduser=$_SESSION['ID_utente']; //oppure $_SESSION['ID_UTENTE']  ISSET..... S SESSION ID UTENTE è DA SETTARE NELL ALTRO FILe(DI LOGIN) O IL FILE CHE SARà
               $sql=mysql_query("SELECT * FROM users WHERE ID_utente='$iduser'")or DIE('query non riuscita'.mysql_error());
@@ -328,13 +328,13 @@ header('Location: login.php');
 
  			<?php
 
-if(($_GET['psw']==1))
+if(isset($_GET['psw'])&& $_GET['psw']==1)
 {
 echo '<br>';  
 echo '<br>';
 echo '<div style="text-align: center" ><font color="green" size="3">&nbsp &nbsp &nbsp Password cambiata correttamente</font></div>';
 }
-if(($_GET['error']==1))
+if(isset($_GET['error'])&& $_GET['error']==1)
 {
   
 echo '<div id="popupUtente2" class="modal fade in" tabindex="-1" aria-hidden="false" style="display: block;" >
@@ -381,7 +381,7 @@ echo '<div id="popupUtente2" class="modal fade in" tabindex="-1" aria-hidden="fa
  </div>
  </div>';
 }
-if(($_GET['selectimg']==1))
+	if(isset($_GET['selectimg'])&& $_GET['selectimg']==1)
 {
 echo '<div id="popupUtente3" class="modal fade in" tabindex="-1" aria-hidden="false" style="display: block;">
 <div class="modal-dialog">
@@ -395,7 +395,7 @@ echo '<div id="popupUtente3" class="modal fade in" tabindex="-1" aria-hidden="fa
 
 <form action="./assets/PHP/cambia_img.php" method="POST" enctype="multipart/form-data">;';
 
-$connessione_al_server=mysql_connect("localhost","project0101","admin");
+$connessione_al_server=mysql_connect("localhost","root","");
 mysql_select_db("my_project0101",$connessione_al_server);
 $iduser=$_SESSION['ID_utente']; //oppure $_SESSION['ID_UTENTE']  ISSET..... S SESSION ID UTENTE è DA SETTARE NELL ALTRO FILe(DI LOGIN) O IL FILE CHE SARà
 $sql=mysql_query("SELECT * FROM users WHERE ID_utente='$iduser'")or DIE('query non riuscita'.mysql_error());
@@ -414,7 +414,7 @@ echo '<div style="margin-left:-85px;margin-bottom:5%;"><img class="imgProfilo" s
  </div>
  </div>';
 }
-if(($_GET['big']==1))
+if(isset($_GET['big'])&& $_GET['big']==1)
 {
 echo '<div id="popupUtente3" class="modal fade in" tabindex="-1" aria-hidden="false" style="display: block;">
 <div class="modal-dialog">
@@ -428,7 +428,7 @@ echo '<div id="popupUtente3" class="modal fade in" tabindex="-1" aria-hidden="fa
 
 <form action="./assets/PHP/cambia_img.php" method="POST" enctype="multipart/form-data">;';
 
-$connessione_al_server=mysql_connect("localhost","project0101","admin");
+$connessione_al_server=mysql_connect("localhost","root","");
 mysql_select_db("my_project0101",$connessione_al_server);
 $iduser=$_SESSION['ID_utente']; //oppure $_SESSION['ID_UTENTE']  ISSET..... S SESSION ID UTENTE è DA SETTARE NELL ALTRO FILe(DI LOGIN) O IL FILE CHE SARà
 $sql=mysql_query("SELECT * FROM users WHERE ID_utente='$iduser'")or DIE('query non riuscita'.mysql_error());
@@ -467,7 +467,7 @@ echo '<div style="margin-left:-85px;margin-bottom:5%;"><img class="imgProfilo" s
     </li></ul>
 <ul class="datiUtente">
   			  <?php
-              $connessione_al_server=mysql_connect("localhost","project0101","admin");
+              $connessione_al_server=mysql_connect("localhost","root","");
 			  mysql_select_db("my_project0101",$connessione_al_server);
               $iduser=$_SESSION['ID_utente']; //oppure $_SESSION['ID_UTENTE']  ISSET..... S SESSION ID UTENTE è DA SETTARE NELL ALTRO FILe(DI LOGIN) O IL FILE CHE SARà
               $sql=mysql_query("SELECT username,email,nome,cognome FROM users WHERE ID_utente='$iduser'")or DIE('query non riuscita'.mysql_error());
@@ -605,7 +605,7 @@ echo '<div style="margin-left:-85px;margin-bottom:5%;"><img class="imgProfilo" s
 
 <form action="./assets/PHP/cambia_img.php" method="POST" enctype="multipart/form-data">;
 <?php
-$connessione_al_server=mysql_connect("localhost","project0101","admin");
+$connessione_al_server=mysql_connect("localhost","root","");
 mysql_select_db("my_project0101",$connessione_al_server);
 $iduser=$_SESSION['ID_utente']; //oppure $_SESSION['ID_UTENTE']  ISSET..... S SESSION ID UTENTE è DA SETTARE NELL ALTRO FILe(DI LOGIN) O IL FILE CHE SARà
 $sql=mysql_query("SELECT * FROM users WHERE ID_utente='$iduser'")or DIE('query non riuscita'.mysql_error());
