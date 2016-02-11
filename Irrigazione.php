@@ -23,7 +23,7 @@ header('Location: login.php');
     <link href="assets/css/bootstrap.css" rel="stylesheet">
     <!--external css-->
     <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="assets/css/zabuto_calendar.css">
+   
     <link rel="stylesheet" type="text/css" href="assets/js/gritter/css/jquery.gritter.css" />
     <link rel="stylesheet" type="text/css" href="assets/lineicons/style.css">    
     
@@ -268,9 +268,9 @@ header('Location: login.php');
                           <span>Extra Pages</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="resetpassw.php">Cambia Password</a></li>
-                          <li><a  href="login.html">Login</a></li>
-                          <li><a  href="lock_screen.html">Lock Screen</a></li>
+                       
+                          <li><a  href="login.php">Login</a></li>
+                          <li><a  href="lock_screen.php">Lock Screen</a></li>
                       </ul>
                   </li>
                   <li class="sub-menu">
@@ -364,7 +364,7 @@ header('Location: login.php');
 						
                     
                       
-                        <!-- CALENDAR-->
+                        <!-- CALENDAR
                         <div id="calendar" class="mb">
                             <div class="panel green-panel no-margin">
                                 <div class="panel-body">
@@ -404,7 +404,7 @@ header('Location: login.php');
 
     <!--script for this page-->
     <script src="assets/js/sparkline-chart.js"></script>    
-	<script src="assets/js/zabuto_calendar.js"></script>
+
     <script src="assets/js/notify.js"></script>
     <script>$( document ).ready(function() {
     notifyMe();
@@ -414,57 +414,7 @@ header('Location: login.php');
 	
 	
 	
-	<script type="application/javascript">
-        $(document).ready(function () {
-            $("#date-popover").popover({html: true, trigger: "manual"});
-            $("#date-popover").hide();
-            $("#date-popover").click(function (e) {
-                $(this).hide();
-            });
-        
-            $("#my-calendar").zabuto_calendar({
-                action: function () {
-                    return myDateFunction(this.id, false);
-                },
-                action_nav: function () {
-                    return myNavFunction(this.id);
-                },
-                ajax: {
-                    url: "show_data.php?action=1",
-                    modal: true
-                },
-                legend: [
-                    {type: "text", label: "Special event", badge: "00"},
-                    {type: "block", label: "Regular event", }
-                ]
-            });
-        });
-        
-        function myDateFunction(id) {
-    var date = $("#" + id).data("date");
-    var hasEvent = $("#" + id).data("hasEvent");
-}
-        /*function myDateFunction(id, fromModal) {
-        $("#date-popover").hide();
-        if (fromModal) {
-            $("#" + id + "_modal").modal("hide");
-        }
-        var date = $("#" + id).data("date");
-        var hasEvent = $("#" + id).data("hasEvent");
-        if (hasEvent && !fromModal) {
-            return false;
-        }
-        $("#date-popover-content").html('You clicked on date ' + date);
-        $("#date-popover").show();
-        return true;
-    }*/
-        function myNavFunction(id) {
-            $("#date-popover").hide();
-            var nav = $("#" + id).data("navigation");
-            var to = $("#" + id).data("to");
-            console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
-        }
-    </script>
+
     <script>
         
 var redirectTimer = (function() {

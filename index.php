@@ -305,7 +305,7 @@ header('Location: login.php');
                       </a>
                       <ul class="sub">
                           <li><a  href="Irrigazione.php">Irrigazione</a></li>
-                          <li><a  href="Fertilizzazione.php">Fertlizzazione</a></li>
+                          <li><a  href="Fertilizzazione.php">fertlizzazione</a></li>
                           <li><a  href="Proprieta_ortaggi.php">Propietà ortaggi</a></li>
                           
                           <li><a  href="Accessori_utili.php">Accessori utili</a></li>
