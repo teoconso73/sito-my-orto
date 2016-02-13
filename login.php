@@ -1,7 +1,8 @@
 <?php
-if(session_id() == '') {
+/*if(session_id() == '') {
     session_start();
-}
+}*/
+session_start();
 //include("/assets/PHP/DB_connect.php");
 //include("/assets/PHP/login.php");
 //include("/assets/PHP/recupero_psw.php");
@@ -46,7 +47,7 @@ if(session_id() == '') {
 <h2 class="form-login-heading" style="text-align: center;"><span style="font-family: 'arial black', sans-serif;"><strong>Log In</strong></span></h2>
 <div class="login-wrap" style="text-align: center;"><input class="form-control" type="text" id="username" name='username' autofocus="" placeholder="User ID" /> <br /> <input class="form-control" name='password' id="password" type="password" placeholder="Password" />
 <?php
-if(isset($_GET['error']))
+if(isset($_GET['error']) && $_GET['error']==1 )  
 {
 echo '<br>';  
 echo '<font color="red" size="3">Username o password errati!</font>';

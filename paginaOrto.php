@@ -194,7 +194,7 @@ header('Location: login.php');
             <div class="top-menu">
             	<ul class="nav pull-right top-menu">
                 <li><a class="logout"  href="lock_screen.php"><i class="fa fa-lock"></i></a></li>
-                    <li><a class="logout" href="/assets/PHP/logout.php">Logout</a></li>
+                    <li><a class="logout" href="assets/PHP/logout.php">Logout</a></li>
             	</ul>
             </div>
         </header>
@@ -317,13 +317,13 @@ header('Location: login.php');
 <table class="table table-bordered table-striped table-condensed tabellaOFF" id="tabella"> 
 <tr><th>NOME</th><th>FRUTTO</th><th>FIORI</th><th>FOGLIE</th><th>DIMENSIONE(cm)</th><th>TERRENO</th><th>IRRIGAZIONE</th></tr>
 <?php 
-$db_connection= mysql_connect("localhost","project0101","admin"); 
+$db_connection= mysql_connect("localhost","root",""); 
 $db_selection = mysql_select_db("my_project0101",$db_connection); 
 if(session_id() == '') {
     session_start();
 }
 $utenteAttuale=$_SESSION['ID_utente'];
-$idOrto=$_GET[id];
+$idOrto=$_GET["id"];
 $query = mysql_query("select *from tabpiante where ID_piante in(select ID_pianta from piante_piantate where ID_orto=$idOrto )");
 while($cicle=mysql_fetch_array($query)){ 
     $id=$cicle['ID_piante'];

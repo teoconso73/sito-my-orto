@@ -32,6 +32,28 @@ header('Location: login.php');
     <link href="assets/css/style-responsive.css" rel="stylesheet">
 
     <script src="assets/js/chart-master/Chart.js"></script>
+	
+	    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/jquery-1.8.3.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="assets/js/jquery.scrollTo.min.js"></script>
+    <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="assets/js/jquery.sparkline.js"></script>
+
+
+    <!--common script for all pages-->
+    <script src="assets/js/common-scripts.js"></script>
+    
+    <script type="text/javascript" src="assets/js/gritter/js/jquery.gritter.js"></script>
+    <script type="text/javascript" src="assets/js/gritter-conf.js"></script>
+
+    <!--script for this page-->
+    <script src="assets/js/sparkline-chart.js"></script>    
+	<script src="assets/js/zabuto_calendar.js"></script>
+    <script src="assets/js/notify.js"></script>
+
     
  
  
@@ -63,7 +85,7 @@ header('Location: login.php');
                 <ul class="nav top-menu">
                     <!-- settings start -->
                     <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="index.php#">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
                             <i class="fa fa-file-text-o"></i>
                             <span class="badge bg-theme">x</span>
                         </a>
@@ -73,7 +95,7 @@ header('Location: login.php');
                                 <p class="green">You have 4 pending tasks</p>
                             </li>
                             <li>
-                                <a href="index.php#">
+                                <a href="index.html#">
                                     <div class="task-info">
                                         <div class="desc">DashGum Admin Panel</div>
                                         <div class="percent">40%</div>
@@ -86,7 +108,7 @@ header('Location: login.php');
                                 </a>
                             </li>
                             <li>
-                                <a href="index.php#">
+                                <a href="index.html#">
                                     <div class="task-info">
                                         <div class="desc">Database Update</div>
                                         <div class="percent">60%</div>
@@ -99,7 +121,7 @@ header('Location: login.php');
                                 </a>
                             </li>
                             <li>
-                                <a href="index.php#">
+                                <a href="index.html#">
                                     <div class="task-info">
                                         <div class="desc">Product Development</div>
                                         <div class="percent">80%</div>
@@ -112,7 +134,7 @@ header('Location: login.php');
                                 </a>
                             </li>
                             <li>
-                                <a href="index.php#">
+                                <a href="index.html#">
                                     <div class="task-info">
                                         <div class="desc">Payments Sent</div>
                                         <div class="percent">70%</div>
@@ -132,7 +154,7 @@ header('Location: login.php');
                     <!-- settings end -->
                     <!-- inbox dropdown start-->
                     <li id="header_inbox_bar" class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="index.php#">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
                             <i class="fa fa-bullhorn"></i>
                             <span class="badge bg-theme">y</span>
                         </a>
@@ -142,7 +164,7 @@ header('Location: login.php');
                                 <p class="green">You have 5 new messages</p>
                             </li>
                             <li>
-                                <a href="index.php#">
+                                <a href="index.html#">
                                     <span class="photo"><img alt="avatar" src="assets/img/ui-zac.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Zac Snider</span>
@@ -154,7 +176,7 @@ header('Location: login.php');
                                 </a>
                             </li>
                             <li>
-                                <a href="index.php#">
+                                <a href="index.html#">
                                     <span class="photo"><img alt="avatar" src="assets/img/ui-divya.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Divya Manian</span>
@@ -166,7 +188,7 @@ header('Location: login.php');
                                 </a>
                             </li>
                             <li>
-                                <a href="index.php#">
+                                <a href="index.html#">
                                     <span class="photo"><img alt="avatar" src="assets/img/ui-danro.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Dan Rogers</span>
@@ -178,7 +200,7 @@ header('Location: login.php');
                                 </a>
                             </li>
                             <li>
-                                <a href="index.php#">
+                                <a href="index.html#">
                                     <span class="photo"><img alt="avatar" src="assets/img/ui-sherman.jpg"></span>
                                     <span class="subject">
                                     <span class="from">Dj Sherman</span>
@@ -190,7 +212,7 @@ header('Location: login.php');
                                 </a>
                             </li>
                             <li>
-                                <a href="index.php#">See all messages</a>
+                                <a href="index.html#">See all messages</a>
                             </li>
                         </ul>
                     </li>
@@ -201,7 +223,7 @@ header('Location: login.php');
             <div class="top-menu">
             	<ul class="nav pull-right top-menu">
                 <li><a class="logout"  href="lock_screen.php"><i class="fa fa-lock"></i></a></li>
-                <li><a class="logout" href="/assets/PHP/logout.php">Logout</a></li>
+                <li><a class="logout" href="assets/PHP/logout.php">Logout</a></li>
             	</ul>
             </div>
         </header>
@@ -268,9 +290,9 @@ header('Location: login.php');
                           <span>Extra Pages</span>
                       </a>
                       <ul class="sub">
-                          
-                          <li><a  href="login.php">Login</a></li>
-                          <li><a  href="lock_screen.php">Lock Screen</a></li>
+                          <li><a  href="resetpassw.php">Cambia Password</a></li>
+                          <li><a  href="login.html">Login</a></li>
+                          <li><a  href="lock_screen.html">Lock Screen</a></li>
                       </ul>
                   </li>
                   <li class="sub-menu">
@@ -305,7 +327,7 @@ header('Location: login.php');
                       </a>
                       <ul class="sub">
                           <li><a  href="Irrigazione.php">Irrigazione</a></li>
-                          <li><a  href="Fertilizzazione.php">fertlizzazione</a></li>
+                          <li><a  href="Fertilizzazione.php">Fertlizzazione</a></li>
                           <li><a  href="Proprieta_ortaggi.php">Propietà ortaggi</a></li>
                           
                           <li><a  href="Accessori_utili.php">Accessori utili</a></li>
@@ -326,9 +348,23 @@ header('Location: login.php');
           <section class="wrapper">
 
               <div class="row"></div>  
-                 
-                  
-                  	
+                 					    <form action="index.php" method="GET">
+INSERISCI temperatura arduino<input name="tem">
+<button type="submit">invia</button>
+
+</form>
+<br>
+
+  <?php 
+  if(isset($_GET["tem"]) && $_GET["tem"]>0)
+  {
+	echo $_GET["tem"];
+	 echo"  <script>$( document ).ready(function() {
+    notifyMe(".$_GET["tem"].");
+}); </script>";
+  }
+      ?>            
+
 					
                  
                   
@@ -364,29 +400,7 @@ header('Location: login.php');
       <!--main content end-->
       
 
-    <!-- js placed at the end of the document so the pages load faster -->
-    <script src="assets/js/jquery.js"></script>
-    <script src="assets/js/jquery-1.8.3.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
-    <script src="assets/js/jquery.scrollTo.min.js"></script>
-    <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
-    <script src="assets/js/jquery.sparkline.js"></script>
 
-
-    <!--common script for all pages-->
-    <script src="assets/js/common-scripts.js"></script>
-    
-    <script type="text/javascript" src="assets/js/gritter/js/jquery.gritter.js"></script>
-    <script type="text/javascript" src="assets/js/gritter-conf.js"></script>
-
-    <!--script for this page-->
-    <script src="assets/js/sparkline-chart.js"></script>    
-	<script src="assets/js/zabuto_calendar.js"></script>
-    <script src="assets/js/notify.js"></script>
-    <script>$( document ).ready(function() {
-    notifyMe();
-}); </script>
 
    
 	
@@ -465,7 +479,7 @@ var redirectTimer = (function() {
         },
 
         redirect: function () {
-            window.location.href = 'lock_screen.php';
+            window.location.href = 'http://www.project0101.altervista.org/lock_screen.php';
         },
         
         startTimer: function() {

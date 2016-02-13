@@ -15,10 +15,10 @@ or DIE('query non riuscita'.mysql_error());
 if(mysql_num_rows($query)==1)//se c'è una persona con quel nome nel db allora loggati
 {        
 
-header('location: http://project0101.altervista.org/index.php');
+header('location: /Progetto/index.php');
 }
 else     
 {
-header('location: http://project0101.altervista.org/lock_screen.php?error=1');
+header('location: /Progetto/lock_screen.php?error=1');
 }
 ?>

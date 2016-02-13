@@ -1,6 +1,6 @@
 <?php
 session_start();
-$db_connection= mysql_connect("localhost","project0101","admin"); 
+$db_connection= mysql_connect("localhost","root",""); 
 $db_selection = mysql_select_db("my_project0101",$db_connection);
 $utenteAttuale=$_SESSION['ID_utente'];
 
@@ -15,6 +15,14 @@ echo $utenteAttuale;
 echo $tipo2;
 echo $nome;
 
+$nomeuguale=mysql_query("SELECT nome from orto WHERE nome='$nome'")or DIE('query non riuscita'.mysql_error());
+ if(mysql_num_rows($nomeuguale)==1)
+{
+header('location:  /paginaOrto.php?nomeuguale=1');
+exit();
+}
+else
+{
 mysql_query("INSERT INTO `my_project0101`.`orto` (`nome`,`ID_utente`,`ID_tipo`) VALUES ('$nome', '$utenteAttuale',$tipo2);");
 $idOrto=mysql_query("SELECT ID_orto from orto where ID_tipo=$tipo2 and nome='$nome'");
 while ($row=mysql_fetch_array($idOrto))
@@ -23,4 +31,7 @@ while ($row=mysql_fetch_array($idOrto))
 }
 echo $idOrto1;
 header ("Location: /paginaOrto.php?id=$idOrto1");
+}
+
+
 ?>

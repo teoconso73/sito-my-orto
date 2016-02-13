@@ -3,7 +3,8 @@ document.addEventListener('DOMContentLoaded', function () {
     Notification.requestPermission();
 });
 
-function notifyMe() {
+function notifyMe(lol) {
+var tem=lol;
 var test=true;
   if (!Notification) {
     alert('Notifiche desktop non disponibili su questo browser,aggiornalo.'); 
@@ -15,7 +16,7 @@ var test=true;
   else {
     var notification = new Notification('Notifica da myOrto', {
       icon: 'http://www.iconj.com/ico/a/d/adbwmdihrp.ico',
-      body: "Ciao! Benvenuto su myOrto",
+      body: "temperatura="+tem,   //    body: "Ciao! Benvenuto su myOrto", 
     });
 
     notification.onclick = function () {

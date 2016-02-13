@@ -194,7 +194,7 @@ header('Location: login.php');
             <div class="top-menu">
             	<ul class="nav pull-right top-menu">
                 <li><a class="logout"  href="lock_screen.php"><i class="fa fa-lock"></i></a></li>
-                    <li><a class="logout" href="/assets/PHP/logout.php">Logout</a></li>
+                    <li><a class="logout" href="assets/PHP/logout.php">Logout</a></li>
             	</ul>
             </div>
         </header>
