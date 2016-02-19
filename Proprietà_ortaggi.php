@@ -13,14 +13,17 @@ header('Location: login.php');
     <meta name="description" content="">
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    
+    
 
-    <title>MyOrto-Orti</title>
+    <title>MyOrto-Home</title>
+    
 
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
     <!--external css-->
     <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="assets/css/zabuto_calendar.css">
+   
     <link rel="stylesheet" type="text/css" href="assets/js/gritter/css/jquery.gritter.css" />
     <link rel="stylesheet" type="text/css" href="assets/lineicons/style.css">    
     
@@ -30,14 +33,18 @@ header('Location: login.php');
 
     <script src="assets/js/chart-master/Chart.js"></script>
     
+ 
+ 
+    
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+ 
   </head>
 
-  <body>
+  <body  >
 
   <section id="container" >
       <!-- **********************************************************************************************************************************************************
@@ -194,7 +201,7 @@ header('Location: login.php');
             <div class="top-menu">
             	<ul class="nav pull-right top-menu">
                 <li><a class="logout"  href="lock_screen.php"><i class="fa fa-lock"></i></a></li>
-                    <li><a class="logout" href="assets/PHP/logout.php">Logout</a></li>
+                <li><a class="logout" href="assets/PHP/logout.php">Logout</a></li>
             	</ul>
             </div>
         </header>
@@ -209,7 +216,7 @@ header('Location: login.php');
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
 			  <?php
-             $connessione_al_server=mysql_connect("localhost","root","");
+            $connessione_al_server=mysql_connect("localhost","root","");
 			  mysql_select_db("my_project0101",$connessione_al_server);
               $iduser=$_SESSION['ID_utente']; //oppure $_SESSION['ID_UTENTE']  ISSET..... S SESSION ID UTENTE è DA SETTARE NELL ALTRO FILe(DI LOGIN) O IL FILE CHE SARà
               $sql=mysql_query("SELECT * FROM users WHERE ID_utente='$iduser'")or DIE('query non riuscita'.mysql_error());
@@ -235,20 +242,14 @@ header('Location: login.php');
                           <i class="fa fa-pagelines"></i>
                           <span>I miei orti</span>
                       </a>
-                      <ul class="sub"> 
-                           <?php //STAMPO IL NOME DEI MIEI ORTI
-                           $query = mysql_query("select * from orto where ID_utente=$iduser");
-                           while($cicle=mysql_fetch_array($query)){
-                           $idOrto=$cicle['ID_orto'];
-                           echo "<li><a  href='paginaOrto.php?id=$idOrto'>".$cicle['nome']."</a></li>";
-                           }
-                           ?>
+                      <ul class="sub">
+                     
+                          <li><a  href="paginaOrto.php">Orto 1</a></li>
                           <li><a  href="general.html">General</a></li>
                           <li><a  href="buttons.html">Buttons</a></li>
                           <li><a  href="panels.html">Panels</a></li>
-                          <li><a  data-toggle="modal" href="paginaOrto.php#popupUtente3">Nuovo Orto <i class="fa fa-plus" style="font-size: 8px;"></i></a></li>
                       </ul>
-                  </li>
+                  
 
                   <li class="sub-menu">
                       <a href="javascript:;" >
@@ -267,9 +268,9 @@ header('Location: login.php');
                           <span>Extra Pages</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="resetpassw.php">Cambia Password</a></li>
-                          <li><a  href="login.html">Login</a></li>
-                          <li><a  href="lock_screen.html">Lock Screen</a></li>
+                       
+                          <li><a  href="login.php">Login</a></li>
+                          <li><a  href="lock_screen.php">Lock Screen</a></li>
                       </ul>
                   </li>
                   <li class="sub-menu">
@@ -297,6 +298,18 @@ header('Location: login.php');
                          <span>Info</span>
                      </a>
                   </li>
+                       <li class="sub-menu">
+                      <a href="javascript:;" >
+                          <i class="fa fa-th"></i>
+                          <span>Guide</span>
+                      </a>
+                      <ul class="sub">
+                          <li><a  href="Irrigazione.php">Irrigazione</a></li>
+                          <li><a  href="Fertilizzazione.php">Fertlizzazione</a></li>
+                          <li><a  href="Proprieta_ortaggi.php">Propietà ortaggi</a></li>
+                          <li><a  href="Accessori_utili.php">Accessori utili</a></li>
+                      </ul>
+                  </li>
 
               </ul>
               <!-- sidebar menu end-->
@@ -311,92 +324,58 @@ header('Location: login.php');
       <section id="main-content">
           <section class="wrapper">
 
-              <div class="row"></div>  
- <div class="contenitore-tabella">
- <button onclick="tabellaONOFF()">MOSTRA</button>
-<table class="table table-bordered table-striped table-condensed tabellaOFF" id="tabella"> 
-<tr><th>NOME</th><th>FRUTTO</th><th>FIORI</th><th>FOGLIE</th><th>DIMENSIONE(cm)</th><th>TERRENO</th><th>IRRIGAZIONE</th></tr>
-<?php 
-$db_connection= mysql_connect("localhost","root",""); 
-$db_selection = mysql_select_db("my_project0101",$db_connection); 
-if(session_id() == '') {
-    session_start();
-}
-$utenteAttuale=$_SESSION['ID_utente'];
-$idOrto=$_GET["id"];
-$query = mysql_query("select *from tabpiante where ID_piante in(select ID_pianta from piante_piantate where ID_orto=$idOrto )");
-while($cicle=mysql_fetch_array($query)){ 
-    $id=$cicle['ID_piante'];
-    echo "<tr>
-    
-    <td class='caselleTabellaOrti'>" .$cicle['nome']."</td>
-    <td class='caselleTabellaOrti'>".$cicle['frutto']."</td>
-    <td class='caselleTabellaOrti'>".$cicle['fiori']."</td>
-    <td class='caselleTabellaOrti'>".$cicle['foglie']."</td>
-    <td class='caselleTabellaOrti'>".$cicle['dimensione']."</td>
-    <td class='caselleTabellaOrti'>".$cicle['terreno']."</td>
-    <td class='caselleTabellaOrti'>".$cicle['irrigazione']."</td>
-    <td><a href='/assets/PHP/delete.php?id=$id&idOrto=$idOrto'><i class='fa fa-trash-o'></i></a></td>
-     </tr>  "; 
-    
-}
-echo "</table>";
-$query10 = mysql_query("select frutto from tabpiante");
-echo"<form method='GET' action='assets/PHP/inserirePianta.php'>
-<label>AGGIUNGI </label>
-<input type='hidden'  name='idOrto' value=$idOrto></input>" .//gli passo anche l'id dell'orto.
-"<select name='scelta'>";
-while($temp=mysql_fetch_array($query10)){ 
-    echo "<option>".$temp['frutto']."</option>";
-}
-echo "</select>";
-echo "<input type='submit' value='invia'></input>";
-echo "</form></div>";
+              <div class="row"></div> 
+              <center>
+              <h2>Proprietà ortaggi </h2>
+              </center>
+              <br>
+              <br>
+                
+           <strong>
+		   Gli ortaggi sono alimenti di origine vegetale appartenenti al VI e VII gruppo degli alimenti.
+La definizione "ortaggi" si riferisce ai prodotti dell'orto, ovvero tutti quei frutti, fiori, semi, foglie, fusti, radici, tuberi e bulbi che possono essere coltivati nell'orto, quindi a livello casalingo; Ortaggiè evidente che si tratta di un termine più gergale che merceologico, poiché la SCALA rispetto alla quale vengono coltivate le verdure (sinonimo) non dovrebbe creare differenze tali da poter scindere le due categorie. Tuttavia, questa piccola precisazione, che ad una prima lettura si manifesta come un piccolo cavillo etimologico, dovrebbe indurre una più accurata riflessione sulla diversità qualitativa (se realmente esistente) tra un ortaggio propriamente detto ed un vegetale analogo diffuso su larga scala; nel dettaglio, porterei all'attenzione dei lettori le disuguaglianze di:
+Livello/tecnica di produzione
+Lunghezza/durata della filiera commerciale
+Il livello/tecnica di produzione e la lunghezza/durata della filiera commerciale degli ortaggi ne possono distinguere il valore nutrizionale complessivo ed il relativo impatto sulla salute del consumatore.
 
-?>       
-                  	
-<!--inizio POPUP NUOVO ORTO-->
-
-<div id="popupUtente3" class="modal fade in" tabindex="-1" aria-hidden="false" style="display: none;">
-<div class="modal-dialog">
-<div class="modal-content">
-
-<div class="modal-header"><button class="close" type="button" data-dismiss="modal" onclick="document.getElementById('popupUtente3').style.display='none'">×</button>
-<h4 class="modal-title">Nuovo orto</h4>
-</div>
-<form method='GET' action='assets/PHP/nuovoOrto.php'>
-<div class="panel-body">
-<div class="task-content">
-  <ul class="task-list">
-     <li>
-          <div> <label class="labelUtente"> Nome Orto: </label>
-                <?php
-                $query10 = mysql_query("select Tipo from tipo");
-                echo '<input type="text" name="nomeOrto" class="modificaDatiUtente form-control" required>
-                <label class="labelUtente"> Tipo di Orto: </label>
-                <select name="tipoOrto">';
-while($temp=mysql_fetch_array($query10)){ 
-    echo "<option>".$temp['Tipo']."</option>";
-}
-echo "</select>";
-?>
-      </div>
-     </li>
-    </ul>
- </div>
- </div>
- <div class="modal-footer">
- <button class="btn btn-default" type="button" data-dismiss="modal">Cancel</button>
- <button class="btn btn-theme" type="submit" >Salva</button>
- </div>
- </form>
-
-
- </div>
- </div>
- </div>
  
-<!--FINE POPUP NUOVO ORTO-->
+Ortaggi: quali sono?
+
+Come anticipato, il gruppo degli ortaggi racchiude numerose tipologie di vegetali prodotti a livello dell'orto; per avere un'idea più precisa di quali siano e del loro consumo effettivo, di seguito ne elencheremo le tipologie più note e diffuse:
+Ortaggi a frutto: sono ortaggi a frutto tutte le drupe, le bacche, gli esperidi e i pomi, quindi i pomodori, le zucchine, le melanzane, i cetrioli, le zucche e i peperoni
+Ortaggi a fiore: carciofo, cavolfiore, broccolo, asparago, fiore di zucca ecc
+Ortaggi a seme: i legumi: tutti i fagioli, ceci, cicerchie, lenticchie, piselli, fave, lupini ecc. NB. I cereali non sono considerati ortaggi poiché la loro coltivazione prevede limiti di produzione (resa per superficie) talmente elevati da NECESSITARE appezzamenti maggiori di quelli intesi per un semplice "orto"
+Ortaggi a foglia: lattughe, radicchio (verde e rosso), rucola, valeriana, borragine, spinacio, catalogna, cavolo, cavolo cappuccio, bietola, cicoria, tarassaco, ecc
+Ortaggi a fusto o a bulbo: sedano, finocchio*, cardo ecc
+Ortaggi a tubero: patata, patata americana, topinambur ecc
+Ortaggi a bulbo: finocchio*, aglio, cipolla, scalogno, porro, ecc.
+
+ 
+Ortaggi: proprietà nutrizionali
+
+Gli ortaggi e le verdure in genere sono alimenti vegetali che si accomunano per l'apporto di:
+Acqua
+Fibra alimentare e carboidrati NON disponibili: sia solubili che insolubili
+Carboidrati disponibili: sia semplici (fruttosio) che complessi (amido)
+Proteine a basso e medio valore biologico: medio SOLO per i legumi, basso per tutti gli altri ortaggi
+Acidi grassi di tipo insaturo: monoinsaturi e polinsaturi non essenziali (soprattutto acido oleico omega-9) e polinsaturi essenziali (soprattutto acido linoleico omega-6 e α-linolenico omega-3)
+Steroli vegetali, lecitine, antiossidanti e altre molecole utili: fitosteroli/fitoestrogeni (che ostacolano l'assorbimento del colesterolo e dovrebbero ridurre i sintomi della sindrome climaterica), lecitine (che migliorano ANCHE A LIVELLO METABOLICO la colesterolemia), polifenoli antiossidanti ecc.
+Vitamine idrosolubili e liposolubili: soprattutto vitamina C (acido ascorbico), vitamina A (retinolo equivalenti) ed acido folico
+Sali minerali: soprattutto potassio (K) e magnesio (Mg), ma anche ferro (Fe - anche se poco biodisponibile) e calcio (Ca)
+Molecole anti-nutrizionali e chelanti: ad esempio acido fitico, acido ossalico, tannini ecc, che legano alcuni sali minerali (ferro, calcio, zinco e selenio) ostacolandone l'assorbimento.
+Differenze tra ortaggi e verdure commerciali
+
+Come summenzionato, le differenze tra ortaggi e verdure commerciali nascono da: livello/tecnica di produzione e dalla lunghezza/durata della filiera commerciale.
+
+Livello/tecnica di produzione degli ortaggi/verdure: senza entrare troppo nello specifico, ricordiamo che per coltivare i vegetali su larga scala è necessario rispettare uno specifico disciplinare di produzione; questo, che può essere di tipo agricoltura tradizionale, lotta integrata o agricoltura biologica, impone degli standard ben precisi, i quali, se da un lato garantiscono l'uniformità delle verdure in commercio, dall'altro non lasciano spazio alla cura "dei dettagli", aspetto peculiare degli ortaggi prodotti a livello casalingo o comunque su piccola scala. Ne sono alcuni esempi: il diserbo a mano, la potatura manuale, l'utilizzo di concimi organici tipo compostum o letame, il cambio o l'aggiunta della terra, il rispetto della stagionalità, il rispetto della maturazione ecc. Tutto questo si ripercuote in maniera relativamente positiva (rispetto all'esperienza e alla dedizione del curante) sulla qualità dell'ortaggio maturo. NB. Non è comunque detto che un ortaggio DEBBA essere di qualità superiore ad una verdura commercializzata su larga scala; spesso, coltivando a livello casalingo senza l'ausilio di antiparassitari, anticrictogamici e diserbanti, le piante vengono infettate/infestate concludendo NEGATIVAMENTE il ciclo di maturazione.
+
+Lunghezza/durata della filiera commerciale: per farla breve, l'ortaggio/verdura staccato o eradicato o tagliato inizia subito un processo di deterioramento enzimatico, di decomposizione e di ossidazione. Le tecniche di conservazione impiegate sui i vegetali freschi appartenenti ad una filiera lunga (refrigerazione, atmosfera controllata, atmosfera modificata ecc.) sono molto efficaci (soprattutto contro il deterioramento ossidativo e la decomposizione batterica/micotica, meno verso quello enzimatico), ma non bloccano completamente il deperimento del prodotto (soprattutto l'aspetto enzimatico). Ciò si traduce in una riduzione significativa del valore organolettico, gustativo e nutrizionale (soprattutto vitaminico) dei vegetali commercializzati in filiera lunga; dal canto loro, gli ortaggi prodotti a livello casalingo possiedono un'integrità praticamente assoluta. NB. Ricordiamo che per i consumatori è comunque possibile (quasi ovunque) approvvigionarsi presso piccoli commercianti di "filiera corta".
+ </strong>
+  <center>
+  <br>
+  <br>
+ <img src="./assets/img/irrigazione-a-goccia.jpg" width=400; height=300; >
+          </center>        	
 					
                  
                   
@@ -405,10 +384,30 @@ echo "</select>";
       RIGHT SIDEBAR CONTENT
       *********************************************************************************************************************************************************** -->                  
                   
-                  
+                  <div class="col-lg-3 ds">
+                    <!--COMPLETED ACTIONS DONUTS CHART-->
+						
+                    
+                      
+                        <!-- CALENDAR
+                        <div id="calendar" class="mb">
+                            <div class="panel green-panel no-margin">
+                                <div class="panel-body">
+                                    <div id="date-popover" class="popover top" style="cursor: pointer; disadding: block; margin-left: 33%; margin-top: -50px; width: 175px;">
+                                        <div class="arrow"></div>
+                                        <h3 class="popover-title" style="disadding: none;"></h3>
+                                        <div id="date-popover-content" class="popover-content"></div>
+                                    </div>
+                                    <div id="my-calendar"></div>
+                                </div>
+                            </div>
+                        </div><!-- / calendar -->
+                      
+                  </div> <!-- /col-lg-3 -->
+               <! --/row -->
           </section>
       </section>
-
+</section>
       <!--main content end-->
       
 
@@ -430,46 +429,18 @@ echo "</select>";
 
     <!--script for this page-->
     <script src="assets/js/sparkline-chart.js"></script>    
-	<script src="assets/js/zabuto_calendar.js"></script>
-    <script type="text/javascript" src="assets/js/inactive.js"></script>
+
+    <script src="assets/js/notify.js"></script>
+    <script>$( document ).ready(function() {
+    notifyMe();
+}); </script>
+
+   
 	
 	
 	
-	<script type="application/javascript">
-        $(document).ready(function () {
-            $("#date-popover").popover({html: true, trigger: "manual"});
-            $("#date-popover").hide();
-            $("#date-popover").click(function (e) {
-                $(this).hide();
-            });
-        
-            $("#my-calendar").zabuto_calendar({
-                action: function () {
-                    return myDateFunction(this.id, false);
-                },
-                action_nav: function () {
-                    return myNavFunction(this.id);
-                },
-                ajax: {
-                    url: "show_data.php?action=1",
-                    modal: true
-                },
-                legend: [
-                    {type: "text", label: "Special event", badge: "00"},
-                    {type: "block", label: "Regular event", }
-                ]
-            });
-        });
-        
-        
-        function myNavFunction(id) {
-            $("#date-popover").hide();
-            var nav = $("#" + id).data("navigation");
-            var to = $("#" + id).data("to");
-            console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
-        }
-    </script>
-       <script>
+
+    <script>
         
 var redirectTimer = (function() {
     var my = {
@@ -525,23 +496,6 @@ var redirectTimer = (function() {
     return ;
 })();
     </script>
-    
-<script>
-function tabellaONOFF()//MOSTRA-NASCONDI TABELLA ORTO
-{ 
-var temp=document.getElementById('tabella')
-if(temp.classList.contains("tabellaOFF")) //SE TABELLAOFF SI TROVA NEL ELEMENTO, SOSTITUISCILA CON TABELLAON
-{
-temp.classList.add('tabellaON');
-temp.classList.remove('tabellaOFF');
-}
-else
-{
-temp.classList.add("tabellaOFF");
-temp.classList.remove("tabellaON");
-}
-}
-</script>
 
   </body>
 </html>
