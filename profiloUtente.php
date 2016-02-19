@@ -209,11 +209,14 @@ header('Location: login.php');
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
 			  <?php
-             $connessione_al_server=mysql_connect("localhost","root","");
-			  mysql_select_db("my_project0101",$connessione_al_server);
+             include("assets/PHP/DB_connect.php");
               $iduser=$_SESSION['ID_utente']; //oppure $_SESSION['ID_UTENTE']  ISSET..... S SESSION ID UTENTE è DA SETTARE NELL ALTRO FILe(DI LOGIN) O IL FILE CHE SARà
-              $sql=mysql_query("SELECT * FROM users WHERE ID_utente='$iduser'")or DIE('query non riuscita'.mysql_error());
-			  $result=mysql_fetch_assoc($sql);
+              $sql=$connessione_al_server->query("SELECT * FROM users WHERE ID_utente='$iduser'");
+			  if(!$sql){
+				printf("Connect failed: %s\n",$sql->connect_error);
+				exit();
+				}
+			  $result= $sql->fetch_assoc();
               $username=$result['username'];
 				//echo '<p="centered"><a href="profile.html"><img src="data:image/jpeg;base64,'.base64_encode( $result['avatar'] ).'"class="img-circle" width="60"</a></p>/>';
 			echo '<div style=margin-left:25%; text-align:center"><a href="profiloUtente.php"><img src="data:image/jpeg;base64,'.base64_encode( $result['avatar'] ).'" class="img-circle" width="100"/> </div>';
@@ -310,11 +313,15 @@ header('Location: login.php');
           	<div class="contenitori-utente">
             
 			<?php
-              $connessione_al_server=mysql_connect("localhost","root","");
-			  mysql_select_db("my_project0101",$connessione_al_server);
+             // $connessione_al_server=mysql_connect("localhost","root","");
+			  //mysql_select_db("my_project0101",$connessione_al_server);
               $iduser=$_SESSION['ID_utente']; //oppure $_SESSION['ID_UTENTE']  ISSET..... S SESSION ID UTENTE è DA SETTARE NELL ALTRO FILe(DI LOGIN) O IL FILE CHE SARà
-              $sql=mysql_query("SELECT * FROM users WHERE ID_utente='$iduser'")or DIE('query non riuscita'.mysql_error());
-			  $result=mysql_fetch_assoc($sql);
+              $sql=$connessione_al_server->query("SELECT * FROM users WHERE ID_utente='$iduser'");
+			  if(!$sql){
+				printf("Connect failed: %s\n",$sql->connect_error);
+				exit();
+				}
+			  $result=$sql->fetch_assoc();
               $username=$result['username'];
 				//echo '<p="centered"><a href="profile.html"><img src="data:image/jpeg;base64,'.base64_encode( $result['avatar'] ).'"class="img-circle" width="60"</a></p>/>';
 			  echo '<img class="imgProfilo" src="data:image/jpeg;base64,'.base64_encode( $result['avatar'] ).'" width="30"/>';
@@ -395,11 +402,15 @@ echo '<div id="popupUtente3" class="modal fade in" tabindex="-1" aria-hidden="fa
 
 <form action="./assets/PHP/cambia_img.php" method="POST" enctype="multipart/form-data">;';
 
-$connessione_al_server=mysql_connect("localhost","root","");
-mysql_select_db("my_project0101",$connessione_al_server);
+//$connessione_al_server=mysql_connect("localhost","root","");
+//mysql_select_db("my_project0101",$connessione_al_server);
 $iduser=$_SESSION['ID_utente']; //oppure $_SESSION['ID_UTENTE']  ISSET..... S SESSION ID UTENTE è DA SETTARE NELL ALTRO FILe(DI LOGIN) O IL FILE CHE SARà
-$sql=mysql_query("SELECT * FROM users WHERE ID_utente='$iduser'")or DIE('query non riuscita'.mysql_error());
-$result=mysql_fetch_assoc($sql);
+$sql=$connessione_al_server->query("SELECT * FROM users WHERE ID_utente='$iduser'");
+if($sql->connect_errno){
+printf("query non riuscita: %s\n",$sql->connect_error);
+exit();
+}
+$result=$sql->fetch_assoc();
 $username=$result['username'];
 echo '<div style="margin-left:-85px;margin-bottom:5%;"><img class="imgProfilo" src="data:image/jpeg;base64,'.base64_encode( $result['avatar'] ).'" width="30"/></div>';
 
@@ -428,11 +439,15 @@ echo '<div id="popupUtente3" class="modal fade in" tabindex="-1" aria-hidden="fa
 
 <form action="./assets/PHP/cambia_img.php" method="POST" enctype="multipart/form-data">;';
 
-$connessione_al_server=mysql_connect("localhost","root","");
-mysql_select_db("my_project0101",$connessione_al_server);
+//$connessione_al_server=mysql_connect("localhost","root","");
+//mysql_select_db("my_project0101",$connessione_al_server);
 $iduser=$_SESSION['ID_utente']; //oppure $_SESSION['ID_UTENTE']  ISSET..... S SESSION ID UTENTE è DA SETTARE NELL ALTRO FILe(DI LOGIN) O IL FILE CHE SARà
-$sql=mysql_query("SELECT * FROM users WHERE ID_utente='$iduser'")or DIE('query non riuscita'.mysql_error());
-$result=mysql_fetch_assoc($sql);
+$sql=$connessione_al_server->query("SELECT * FROM users WHERE ID_utente='$iduser'");
+if($sql->connect_errno){
+printf("query non riuscita: %s\n",$sql->connect_error);
+exit();
+}
+$result=$sql->fetch_assoc();
 $username=$result['username'];
 echo '<div style="margin-left:-85px;margin-bottom:5%;"><img class="imgProfilo" src="data:image/jpeg;base64,'.base64_encode( $result['avatar'] ).'" width="30"/></div>';
 
@@ -467,11 +482,15 @@ echo '<div style="margin-left:-85px;margin-bottom:5%;"><img class="imgProfilo" s
     </li></ul>
 <ul class="datiUtente">
   			  <?php
-              $connessione_al_server=mysql_connect("localhost","root","");
-			  mysql_select_db("my_project0101",$connessione_al_server);
+              //$connessione_al_server=mysql_connect("localhost","root","");
+			  //mysql_select_db("my_project0101",$connessione_al_server);
               $iduser=$_SESSION['ID_utente']; //oppure $_SESSION['ID_UTENTE']  ISSET..... S SESSION ID UTENTE è DA SETTARE NELL ALTRO FILe(DI LOGIN) O IL FILE CHE SARà
-              $sql=mysql_query("SELECT username,email,nome,cognome FROM users WHERE ID_utente='$iduser'")or DIE('query non riuscita'.mysql_error());
-			  $result=mysql_fetch_assoc($sql);
+              $sql=$connessione_al_server->query("SELECT username,email,nome,cognome FROM users WHERE ID_utente='$iduser'");
+			  if(!$sql){
+printf("Connect failed: %s\n",$sql->connect_error);
+exit();
+}
+			  $result=$sql->fetch_assoc();
               $username=$result['username'];
 			  $email=$result['email'];
 			  $nome=$result['nome'];
@@ -605,11 +624,15 @@ echo '<div style="margin-left:-85px;margin-bottom:5%;"><img class="imgProfilo" s
 
 <form action="./assets/PHP/cambia_img.php" method="POST" enctype="multipart/form-data">;
 <?php
-$connessione_al_server=mysql_connect("localhost","root","");
-mysql_select_db("my_project0101",$connessione_al_server);
+//$connessione_al_server=mysql_connect("localhost","root","");
+//mysql_select_db("my_project0101",$connessione_al_server);
 $iduser=$_SESSION['ID_utente']; //oppure $_SESSION['ID_UTENTE']  ISSET..... S SESSION ID UTENTE è DA SETTARE NELL ALTRO FILe(DI LOGIN) O IL FILE CHE SARà
-$sql=mysql_query("SELECT * FROM users WHERE ID_utente='$iduser'")or DIE('query non riuscita'.mysql_error());
-$result=mysql_fetch_assoc($sql);
+$sql=$connessione_al_server->query("SELECT * FROM users WHERE ID_utente='$iduser'");
+if(!$sql){
+printf("Connect failed: %s\n",$sql->connect_error);
+exit();
+}
+$result=$sql->fetch_assoc();
 $username=$result['username'];
 echo '<div style="margin-left:-85px;margin-bottom:5%;"><img class="imgProfilo" src="data:image/jpeg;base64,'.base64_encode( $result['avatar'] ).'" width="30"/></div>';
  ?> 

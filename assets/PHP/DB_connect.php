@@ -1,8 +1,10 @@
 <?php     //connessione al nostro database
-$connessione_al_server=mysql_connect("localhost","root","");  // ip locale, login e password  PASSWORD FORSE DA METTERE VUOTA(SE NON VA)
-if(!$connessione_al_server){
-die ('Non riesco a connettermi: errore '.mysql_error()); // questo apparirà solo se ci sarà un errore
+$connessione_al_server= new mysqli("localhost","root","","my_project0101");  // ip locale, login e password  PASSWORD FORSE DA METTERE VUOTA(SE NON VA)
+if($connessione_al_server->connect_errno){
+printf("Connect failed: %s\n",$connessione_al_server->connect_error);
+exit();
 }
+
 
 //$db_selected=mysql_select_db("my_project0101",$connessione_al_server); //
 /*if(!$db_selected){
