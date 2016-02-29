@@ -405,7 +405,7 @@ echo '<div id="popupUtente3" class="modal fade in" tabindex="-1" aria-hidden="fa
 //$connessione_al_server=mysql_connect("localhost","root","");
 //mysql_select_db("my_project0101",$connessione_al_server);
 $iduser=$_SESSION['ID_utente']; //oppure $_SESSION['ID_UTENTE']  ISSET..... S SESSION ID UTENTE è DA SETTARE NELL ALTRO FILe(DI LOGIN) O IL FILE CHE SARà
-$sql=$connessione_al_server->query("SELECT * FROM users WHERE ID_utente='$iduser'");
+$sql=$connessione_al_server->query("SELECT * FROM users WHERE ID_utente='$iduser");
 if($sql->connect_errno){
 printf("query non riuscita: %s\n",$sql->connect_error);
 exit();

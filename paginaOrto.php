@@ -1,7 +1,7 @@
 <?php
 session_start();
 //include("/assets/PHP/login.php"); 
-//include("/assets/PHP/DB_connect.php")
+include("/assets/PHP/DB_connect.php");
 if($_SESSION['logged']==false)
 header('Location: login.php');
 ?>
@@ -209,11 +209,15 @@ header('Location: login.php');
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
 			  <?php
-             $connessione_al_server=mysql_connect("localhost","root","");
-			  mysql_select_db("my_project0101",$connessione_al_server);
-              $iduser=$_SESSION['ID_utente']; //oppure $_SESSION['ID_UTENTE']  ISSET..... S SESSION ID UTENTE è DA SETTARE NELL ALTRO FILe(DI LOGIN) O IL FILE CHE SARà
-              $sql=mysql_query("SELECT * FROM users WHERE ID_utente='$iduser'")or DIE('query non riuscita'.mysql_error());
-			  $result=mysql_fetch_assoc($sql);
+             //$connessione_al_server=mysql_connect("localhost","root","");
+			  //mysql_select_db("my_project0101",$connessione_al_server);
+             $iduser=$_SESSION['ID_utente']; //oppure $_SESSION['ID_UTENTE']  ISSET..... S SESSION ID UTENTE è DA SETTARE NELL ALTRO FILe(DI LOGIN) O IL FILE CHE SARà
+				$sql=$connessione_al_server->query("SELECT * FROM users WHERE ID_utente='$iduser'");
+			  if(!$sql){
+				printf("query non riuscita: %s\n",$sql->connect_error);
+				exit();
+					}
+			  $result=$sql->fetch_assoc();
               $username=$result['username'];
 				//echo '<p="centered"><a href="profile.html"><img src="data:image/jpeg;base64,'.base64_encode( $result['avatar'] ).'"class="img-circle" width="60"</a></p>/>';
 			echo '<div style=margin-left:25%; text-align:center"><a href="profiloUtente.php"><img src="data:image/jpeg;base64,'.base64_encode( $result['avatar'] ).'" class="img-circle" width="100"/></div>';
@@ -237,8 +241,8 @@ header('Location: login.php');
                       </a>
                       <ul class="sub"> 
                            <?php //STAMPO IL NOME DEI MIEI ORTI
-                           $query = mysql_query("select * from orto where ID_utente=$iduser");
-                           while($cicle=mysql_fetch_array($query)){
+                           $query = $connessione_al_server->query("select * from orto where ID_utente=$iduser");
+                           while($cicle=$query->fetch_array(MYSQLI_ASSOC)){
                            $idOrto=$cicle['ID_orto'];
                            echo "<li><a  href='paginaOrto.php?id=$idOrto'>".$cicle['nome']."</a></li>";
                            }
@@ -317,15 +321,14 @@ header('Location: login.php');
 <table class="table table-bordered table-striped table-condensed tabellaOFF" id="tabella"> 
 <tr><th>NOME</th><th>FRUTTO</th><th>FIORI</th><th>FOGLIE</th><th>DIMENSIONE(cm)</th><th>TERRENO</th><th>IRRIGAZIONE</th></tr>
 <?php 
-$db_connection= mysql_connect("localhost","root",""); 
-$db_selection = mysql_select_db("my_project0101",$db_connection); 
+
 if(session_id() == '') {
     session_start();
 }
 $utenteAttuale=$_SESSION['ID_utente'];
 $idOrto=$_GET["id"];
-$query = mysql_query("select *from tabpiante where ID_piante in(select ID_pianta from piante_piantate where ID_orto=$idOrto )");
-while($cicle=mysql_fetch_array($query)){ 
+$query = $connessione_al_server->query("select *from tabpiante where ID_piante in(select ID_pianta from piante_piantate where ID_orto=$idOrto )");
+while($cicle=$query->fetch_array(MYSQLI_ASSOC)){ 
     $id=$cicle['ID_piante'];
     echo "<tr>
     
@@ -341,12 +344,12 @@ while($cicle=mysql_fetch_array($query)){
     
 }
 echo "</table>";
-$query10 = mysql_query("select frutto from tabpiante");
+$query10 = $connessione_al_server->query("select frutto from tabpiante");
 echo"<form method='GET' action='assets/PHP/inserirePianta.php'>
 <label>AGGIUNGI </label>
 <input type='hidden'  name='idOrto' value=$idOrto></input>" .//gli passo anche l'id dell'orto.
 "<select name='scelta'>";
-while($temp=mysql_fetch_array($query10)){ 
+while($temp=$query10->fetch_array(MYSQLI_ASSOC)){ 
     echo "<option>".$temp['frutto']."</option>";
 }
 echo "</select>";
@@ -371,11 +374,11 @@ echo "</form></div>";
      <li>
           <div> <label class="labelUtente"> Nome Orto: </label>
                 <?php
-                $query10 = mysql_query("select Tipo from tipo");
+                $query10 =$connessione_al_server->query("select Tipo from tipo");
                 echo '<input type="text" name="nomeOrto" class="modificaDatiUtente form-control" required>
                 <label class="labelUtente"> Tipo di Orto: </label>
                 <select name="tipoOrto">';
-while($temp=mysql_fetch_array($query10)){ 
+while($temp=$query10->fetch_array(MYSQLI_ASSOC)){ 
     echo "<option>".$temp['Tipo']."</option>";
 }
 echo "</select>";
