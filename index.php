@@ -1,7 +1,8 @@
 <?php
 session_start();
 //include("/assets/PHP/login.php"); 
-//include("/assets/PHP/DB_connect.php")
+include("/assets/PHP/DB_connect.php");
+include ("/assets/PHP/popupNewOrto.php");
 if($_SESSION['logged']==false)
 header('Location: login.php');
 ?>
@@ -238,11 +239,14 @@ header('Location: login.php');
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
 			  <?php
-              $connessione_al_server=mysql_connect("localhost","root","");
-			  mysql_select_db("my_project0101",$connessione_al_server);
+              
               $iduser=$_SESSION['ID_utente']; //oppure $_SESSION['ID_UTENTE']  ISSET..... S SESSION ID UTENTE è DA SETTARE NELL ALTRO FILe(DI LOGIN) O IL FILE CHE SARà
-              $sql=mysql_query("SELECT * FROM users WHERE ID_utente='$iduser'")or DIE('query non riuscita'.mysql_error());
-			  $result=mysql_fetch_assoc($sql);
+              $sql=$connessione_al_server->query("SELECT * FROM users WHERE ID_utente='$iduser'")or DIE('query non riuscita'.mysql_error());
+			   if(!$sql){
+				printf("Connect failed: %s\n",$sql->connect_error);
+				exit();
+				}
+			  $result=$sql->fetch_assoc();
               $username=$result['username'];
 				//echo '<p="centered"><a href="profile.html"><img src="data:image/jpeg;base64,'.base64_encode( $result['avatar'] ).'"class="img-circle" width="60"</a></p>/>';
 			echo '<div style=margin-left:25%; text-align:center"><a href="profiloUtente.php"><img src="data:image/jpeg;base64,'.base64_encode( $result['avatar'] ).'" class="img-circle" width="100"/></div>';
@@ -265,11 +269,17 @@ header('Location: login.php');
                           <span>I miei orti</span>
                       </a>
                       <ul class="sub">
-                     
-                          <li><a  href="paginaOrto.php">Orto 1</a></li>
-                          <li><a  href="general.html">General</a></li>
+                     <?php //STAMPO IL NOME DEI MIEI ORTI
+                           $query = $connessione_al_server->query("select * from orto where ID_utente=$iduser");
+                           while($cicle=$query->fetch_array(MYSQLI_ASSOC)){
+                           $idOrto=$cicle['ID_orto'];
+                           echo "<li><a  href='paginaOrto.php?id=$idOrto'>".$cicle['nome']."</a></li>";
+                           }
+                           ?>
+						  <li><a  href="general.html">General</a></li>
                           <li><a  href="buttons.html">Buttons</a></li>
                           <li><a  href="panels.html">Panels</a></li>
+						  <li><a  data-toggle="modal" href="#popupNewOrto">Nuovo Orto <i class="fa fa-plus" style="font-size: 8px;"></i></a></li>
                       </ul>
                   
 

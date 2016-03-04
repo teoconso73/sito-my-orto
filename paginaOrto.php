@@ -2,6 +2,7 @@
 session_start();
 //include("/assets/PHP/login.php"); 
 include("/assets/PHP/DB_connect.php");
+include ("/assets/PHP/popupNewOrto.php");
 if($_SESSION['logged']==false)
 header('Location: login.php');
 ?>
@@ -250,7 +251,7 @@ header('Location: login.php');
                           <li><a  href="general.html">General</a></li>
                           <li><a  href="buttons.html">Buttons</a></li>
                           <li><a  href="panels.html">Panels</a></li>
-                          <li><a  data-toggle="modal" href="paginaOrto.php#popupUtente3">Nuovo Orto <i class="fa fa-plus" style="font-size: 8px;"></i></a></li>
+                          <li><a  data-toggle="modal" href="#popupNewOrto">Nuovo Orto <i class="fa fa-plus" style="font-size: 8px;"></i></a></li>
                       </ul>
                   </li>
 
@@ -315,9 +316,15 @@ header('Location: login.php');
       <section id="main-content">
           <section class="wrapper">
 
-              <div class="row"></div>  
+              <div class="row"></div> 
+<?php
+ $idOrto=$_GET["id"];
+ $nomeOrto=$connessione_al_server->query("SELECT nome from orto where ID_orto='$idOrto'");
+ while($cicle=$nomeOrto->fetch_array(MYSQLI_ASSOC))
+ echo "<label class='nome-orto'>".$cicle['nome']."</label>";
+ ?>			  
  <div class="contenitore-tabella">
- <button onclick="tabellaONOFF()">MOSTRA</button>
+  <button onclick="tabellaONOFF()">MOSTRA</button>
 <table class="table table-bordered table-striped table-condensed tabellaOFF" id="tabella"> 
 <tr><th>NOME</th><th>FRUTTO</th><th>FIORI</th><th>FOGLIE</th><th>DIMENSIONE(cm)</th><th>TERRENO</th><th>IRRIGAZIONE</th></tr>
 <?php 
@@ -326,7 +333,6 @@ if(session_id() == '') {
     session_start();
 }
 $utenteAttuale=$_SESSION['ID_utente'];
-$idOrto=$_GET["id"];
 $query = $connessione_al_server->query("select *from tabpiante where ID_piante in(select ID_pianta from piante_piantate where ID_orto=$idOrto )");
 while($cicle=$query->fetch_array(MYSQLI_ASSOC)){ 
     $id=$cicle['ID_piante'];
@@ -339,7 +345,7 @@ while($cicle=$query->fetch_array(MYSQLI_ASSOC)){
     <td class='caselleTabellaOrti'>".$cicle['dimensione']."</td>
     <td class='caselleTabellaOrti'>".$cicle['terreno']."</td>
     <td class='caselleTabellaOrti'>".$cicle['irrigazione']."</td>
-    <td><a href='/assets/PHP/delete.php?id=$id&idOrto=$idOrto'><i class='fa fa-trash-o'></i></a></td>
+    <td><a href='assets/PHP/delete.php?id=$id&idOrto=$idOrto'><i class='fa fa-trash-o'></i></a></td>
      </tr>  "; 
     
 }
@@ -358,48 +364,7 @@ echo "</form></div>";
 
 ?>       
                   	
-<!--inizio POPUP NUOVO ORTO-->
 
-<div id="popupUtente3" class="modal fade in" tabindex="-1" aria-hidden="false" style="display: none;">
-<div class="modal-dialog">
-<div class="modal-content">
-
-<div class="modal-header"><button class="close" type="button" data-dismiss="modal" onclick="document.getElementById('popupUtente3').style.display='none'">×</button>
-<h4 class="modal-title">Nuovo orto</h4>
-</div>
-<form method='GET' action='assets/PHP/nuovoOrto.php'>
-<div class="panel-body">
-<div class="task-content">
-  <ul class="task-list">
-     <li>
-          <div> <label class="labelUtente"> Nome Orto: </label>
-                <?php
-                $query10 =$connessione_al_server->query("select Tipo from tipo");
-                echo '<input type="text" name="nomeOrto" class="modificaDatiUtente form-control" required>
-                <label class="labelUtente"> Tipo di Orto: </label>
-                <select name="tipoOrto">';
-while($temp=$query10->fetch_array(MYSQLI_ASSOC)){ 
-    echo "<option>".$temp['Tipo']."</option>";
-}
-echo "</select>";
-?>
-      </div>
-     </li>
-    </ul>
- </div>
- </div>
- <div class="modal-footer">
- <button class="btn btn-default" type="button" data-dismiss="modal">Cancel</button>
- <button class="btn btn-theme" type="submit" >Salva</button>
- </div>
- </form>
-
-
- </div>
- </div>
- </div>
- 
-<!--FINE POPUP NUOVO ORTO-->
 					
                  
                   
