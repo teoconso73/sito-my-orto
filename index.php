@@ -358,13 +358,24 @@ header('Location: login.php');
           <section class="wrapper">
 
               <div class="row"></div>  
-                 					    <form action="index.php" method="GET">
+             <!--  <form action="index.php" method="GET">
 INSERISCI temperatura arduino<input name="tem">
 <button type="submit">invia</button>
 
-</form>
+</form> -->
 <br>
+<div class="col-sm-3 mb">
+<div class="numero-orti">
+<i class="fa fa-leaf" style="font-size:50px;"></i><br>
+<span>NUMERO DI ORTI </span><br>
 
+<?php //STAMPA NUMERO DI ORTI
+$numOrti=$connessione_al_server->query("SELECT 	count(*) as 'numero' from orto where ID_utente=$iduser ");
+while($cicle=$numOrti->fetch_assoc())
+	echo "<span style='font-size:30px;color:red; font-weight:bold'>".$cicle['numero']."</span>";
+?>
+</div>
+</div>
   <?php 
   if(isset($_GET["tem"]) && $_GET["tem"]>0)
   {
