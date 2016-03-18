@@ -326,63 +326,119 @@ header('Location: login.php');
 
               <div class="row"></div> 
               <center>
-              <h2>FERTILIZZAZIONE </h2>
+              <h2>ATTREZZI PER L' ORTO </h2>
               </center>
               <br>
               <br>
                 
               <strong>
-Per fertilizzazione s'intende l'apporto di un materiale di qualsiasi natura, detto fertilizzante, con lo scopo di migliorare uno o più aspetti della fertilità del terreno. Dal punto di vista tecnico, i fertilizzanti sono distinti in tre categorie, in funzione del tipo di fertilità con cui interagiscono.<br>
+Quali sono gli attrezzi fondamentali per coltivare un orto? La risposta è: dipende, perché a seconda della tipologia di orto potrebbero essere necessari strumenti anche molto costosi e tecnologici. In realtà per gli orti amatoriali gli attrezzi fondamentali sono diversi, ma tutti abbastanza semplici e relativamente costosi; è però importante che siano di buona fattura perché, se trattati con cura, potranno durare molto a lungo.<br>
 
-_Gli ammendanti sono quei fertilizzanti che migliorano le proprietà fisiche del terreno e, attraverso queste, influenzano le proprietà chimiche e quelle biologiche. È perciò da considerarsi ammendante un materiale che equilibri una tessitura anomala o che conferisca struttura ad un terreno incoerente o che ne migliori lo stato strutturale stabilizzandolo. Ad esempio, sono da considerarsi ammendanti, nel contesto specifico, i seguenti materiali:<br>
+Nella scelta degli attrezzi da orto bisogna prendere in considerazione soprattutto la robustezza e la funzionalità; appare a tutti ovvio che, per esempio, l’ergonomicità dell’attrezzo e il suo peso debbano essere adeguati alle capacità dell’utilizzatore. Molta attenzione deve essere per esempio messa nella scelta del manico della vanga o della zappa. Esistono manici in diversi materiali: legno, metallo e plastica. Ci sentiamo di sbilanciarci verso il legno che ha dalla sua maneggevolezza e robustezza. Il legno migliore per i manici degli attrezzi da orto è il frassino, anche se il più diffuso è probabilmente il faggio.<br>
 
-materiali argillosi, limitatamente all'apporto in terreni sabbiosi (azione equilibrante sulla tessitura);<br>
+Passiamo quindi a una breve rassegna degli attrezzi fondamentali per la coltivazione dell’orto.<br><br>
 
-Sabbia, limitatamente all'apporto in terreni argillosi (azione equilibrante sulla tessitura);<br>
+Vanga<br>
 
-letame o altro materiale organico che incrementi il tenore di humus nel terreno (azione migliorativa e stabilizzante sulla struttura).<br>
+In commercio esistono diversi tipi di vanga; sostanzialmente la differenza fondamentale fra l’una e l’altra è relativa alla lama che è fissata al manico; essa può essere di forma quadrata, rettangolare o a scudo; esistono anche vanghe a rebbi, molto simili ai forconi, ma nelle prime i rebbi sono più corti e dritti; è un tipo di vanga che è particolarmente adatta alla lavorazione di quei terreni che si presentano particolarmente compatti e argillosi. La vanga è simile alla pala, ma a differenza di questa la forza utilizzata per affondare la lama del terreno è quella del piede anziché quella delle braccia; nella sua parte inferiore infatti la vanga presenta una staffa poggiapiede in metallo che serve a spingere la lama nel terreno in modo particolarmente agevole.  La vanga serve a rivoltare le zolle, a romperle e a preparare il terreno per la procedura della semina.<br><br>
 
-_I correttivi sono quei fertilizzanti che migliorano la reazione del terreno spostando il pH da valori anomali verso la neutralità. Potenzialmente hanno azione correttiva tutti quei materiali che sono costituzionalmente o fisiologicamente acidi o alcalini. Sono tradizionalmente considerati correttivi la calce e il calcare nei terreni a reazione acida, e lo zolfo[1] e il gesso nei terreni basici con alcalinità costituzionale (terreni calcarei). L'efficacia dei correttivi è condizionata da vari fattori:<br>
+ Zappa<br>
 
-1)Comportamento chimico dei componenti prevalenti. In questo caso è fondamentale la composizione del correttivo e la natura chimica dei suoi componenti: le basi e gli acidi hanno un'azione correttiva più efficace dei sali, la cui azione è fondamentalmente dovuta a fenomeni di idrolisi salina o di assorbimento selettivo da parte delle piante (materiali fisiologicamente acidi o basici). Ad esempio, la calce e lo zolfo hanno un'azione correttiva più efficace, rispettivamente, del calcare e del gesso.<br>
-                  
-2)Grado di finezza del materiale. Il grado di finezza ha riflessi sulla superficie di sviluppo ed è di particolare importanza per i correttivi rappresentati da sali poco solubili come il calcare e il gesso. Questi materiali, infatti, hanno un'efficacia relativa, come correttivi, solo se finemente macinati, mentre la frantumazione grossolana li rende sostanzialmente inerti.<br>
-                  
-3)Potere tampone del terreno. Il complesso di scambio del terreno e, in misura minore, la composizione della frazione minerale della soluzione circolante hanno un'intrinseco potere tamponante che tende a compensare le variazioni di pH. Il potere tampone si manifesta in maniera più intensa proprio nei confronti degli interventi correttivi, in ogni caso varia in funzione delle cause che sono alla base della reazione anomale.<br>
-                  
-L'opportunità di un intervento correttivo è determinata dalle reali necessità, dalla sostenibilità economica e dall'efficacia intrinseca dell'intervento, soprattutto in relazione al potere tampone del terreno. Il concorso di questi fattori rende varia notevolmente secondo il contesto:<br>
+Come nel caso della vanga, i modelli di zappa in commercio sono diversi. Dal momento che la zappa è un attrezzo di uso abbastanza frequente nella coltivazione dell’orto è bene, al momento dell’acquisto, fare alcune prove e scegliere il modello che più riteniamo adatto alle nostre capacità e alla nostra forza. Sostanzialmente esistono zappe di due tipi; quelle con la lama appuntita e quelle a lama trapezoidale. La zappa a lama appuntita serve in particolar modo per rincalzare il terreno (la rincalzatura consiste nell’ammucchiare il terreno intorno al piede della pianta per proteggerla meglio dal freddo), mentre la zappa con la lama trapezoidale viene utilizzata per altre lavorazioni quali la rottura del terreno e delle zolle, la sarchiatura (una lavorazione che consente di estirpare le erbacce e di far respirare le radici delle piante) e la formazione dei solchi.<br><br>
 
-Terreni sodici. I terreni con alcalinità di assorbimento, dovuta ad un eccesso di sodio nel complesso di scambio e di sali di sodio a idrolisi alcalina nella soluzione circolante (carbonato di sodio e bicarbonato di sodio), presentano problemi agronomici tali da rendere poco opportuna, se non del tutto sconveniente, la correzione. La scarsa vocazione agronomica è infatti dovuta agli effetti negativi del sodio sulla struttura del terreno, che prevalgono sull'interferenza, da parte del pH, con la nutrizione minerale delle piante.<br>
-                  
-Terreni calcarei. I terreni con alcalinità costituzionale, dovuta ad un eccesso di calcare attivo possono essere corretti con l'apporto di zolfo o di gesso, con efficacia subordinata all'effettivo potere tampone del terreno. I correttivi acidificanti hanno un costo relativamente alto che difficilmente può essere compensato dalla remuneratività dei benefici della correzione. Va anche precisato che i terreni calcarei possono offrire buone prestazioni di produttività con un'adeguata scelta delle colture (specie agraria, cultivar, portinnesto) e con l'adozione di opportuni accorgimenti agronomici.<br>
-                  
-Terreni acidi. In questi terreni la reazione anomala rappresenta il principale fattore limitante in quanto interferisce negativamente sulla nutrizione minerale, sia per la carenza di basi (in particolare il calcio), sia per l'insolubilizzazione del fosforo. In subordine all'effetto tampone, i terreni acidi sono perciò quelli che rispondono meglio alla correzione del pH.<br>
+Pala o badile<br>
 
-_Sono concimi quei fertilizzanti che migliorano la dotazione del terreno in uno o più elementi della fertilità. Questi fertilizzanti sono perciò apportati al fine di aumentare la dotazione di un terreno povero (concimazione di fondo) o per soddisfare i fabbisogni nutritivi di una coltura senza incorrere nel depauperamento della fertilità del suolo (concimazione ordinaria di produzione).<br>
+La pala è un attrezzo molto simile alla vanga, ma per la lavorazione dell’orto è molto meno utilizzata. Consta sostanzialmente di un manico al quale è fissata una lama lievemente concava di forma quadrata o triangolare. Viene usata per togliere la terra o altri materiali.<br><br>
 
-I concimi sono i fertilizzanti di maggior impiego in agricoltura e il loro impiego si rende necessario soprattutto in un'agricoltura di tipo intensivo, volta ad ottenere rese unitarie elevate. In altre condizioni, il mancato ricorso alla concimazione comporta un lento ma progressivo impoverimento del terreno, che in tempi più o meno lunghi va incontro a fenomeni di insterilimento. Questo problema è particolarmente sentito nelle aree tropicali dei paesi in via di sviluppo, dove la messa a coltura dei terreni naturali, in assenza di interventi di fertilizzazione, intensifica il processo della desertificazione a causa del modesto potere assorbente del terreno e del dilavamento degli elementi nutritivi nei climi piovosi.<br>
+Forcone<br>
 
-I concimi si classificano principalmente in funzione dell'origine del materiale e della composizione chimica, con riferimento al contenuto in uno o più elementi principali della fertilità (azoto, fosforo, potassio).<br>
+ 
+Con il forcone vengono eseguite diverse lavorazioni; con esso infatti si sminuzzano le zolle, si dà aria al terreno dell’orto e si eseguono gli spostamenti dei materiali organici e del letame.
 
-In base al primo criterio, i concimi sono distinti in tre categorie:<br>
+Il forcone può avere sia rebbi curvi (più comuni) e rebbi piatti; solitamente il materiale migliore è l’acciaio temprato.
 
-1)Concimi organici. Sono materiali di origine biologica, animale o vegetale, utilizzati tali e quali o opportunamente trattati. Sono concimi organici, ad esempio, il letame, il compost, la pollina, ecc.
-Concimi minerali o chimici. Sono materiali ottenuti da una sintesi chimica in un processo industriale (es. l'urea) oppure dall'estrazione con eventuale trattamento industriale (es. il perfosfato minerale, il cloruro di potassio).<br>
-                  
-2)Concimi organominerali. Sono materiali ottenuti dalla miscelazione di concimi organici con concimi chimici o dal trattamento di materiali organici con agenti chimici.<br>
-                  
-In base al secondo criterio, applicato fondamentalmente per i concimi chimici, i concimi sono così classificati:<br>
+Viene anche utilizzato per rimuovere le erbe falciate e i piccoli rami e anche per dissotterrare i tuberi; in quest’ultimo caso si utilizza il forcone a denti piatti.
 
-1)Concimi ternari: contengono i tre macroelementi principali della fertilità (NPK).<br>
-                  
-2)Concimi binari: contengono solo due macroelementi principali della fertilità. Si distinguono in azoto-potassici (NK), azoto-fosfatici (NP) e fosfopotassici (PK).<br>
-                  
-3)Concimi semplici: contengono un solo macroelemento principale della fertilità, associato eventualmente ad uno o più macroelementi secondari (calcio, zolfo, magnesio) o a microlementi (ferro, rame, boro, ecc.). Si distinguono in azotati, fosfatici e potassici.
+Rastrello
+
+Esistono diversi tipi di rastrello; per la lavorazione dell’orto però è necessario solo quello in metallo la cui lunghezza può variare dai 30 ai 60 cm circa; i rebbi devono essere corti; l’uso principale del rastrello è quello della livellatura del terreno, ma può servire anche per la sbriciolatura delle zolle e per la copertura delle sementi e, se necessario, per sarchiature sommarie.
+
+I rastrelli a denti flessibili sono utilizzati invece non tanto per la lavorazione dell’orto, ma per rimuovere le foglie secche che cadono dagli alberi.<br><br>
+
+Sarchiello (sarchiatore o erpicature manuale)<br>
+
+Il sarchiello è sostanzialmente un attrezzo con tre denti che viene utilizzato a mo’ di zappa e cui scopi principali sono quelli di provvedere alla rimozione delle erbacce e di arieggiare le zolle fra un ortaggio e l’altro.<br><br>
+
+Trapiantatoio<br>
+
+È la tipica paletta che non può mancare fra gli attrezzi utilizzati di chi si occupa di giardinaggio e che viene utilizzata spesso anche da chi cura l’orto. In commercio vi sono trapiantatoi in metallo, legno o plastica. Il trapiantatoio viene usato soprattutto quando si devono sradicare le piccole piante dal semenzaio per poi ripiantarle nel luogo a cui sono destinate. La lama deve essere abbastanza spessa e il manico dovrebbe essere il più ergonomico possibile visto il frequente uso che se ne fa.<br><br>
+
+Piccone<br>
+
+Raramente si usa il piccone nell’orto se non nel caso in cui non sia necessario procedere al dissodamento di terreni particolarmente compatti; può essere utile, grazie al suo unico dente lungo e appuntito, per preparare solchi piuttosto stretti o scavare buche.<br><br>
+
+Carriola<br>
+
+attrezzi da ortoLa carriola è un attrezzo indispensabile per tutti gli spostamenti laboriosi; la si usa infatti per il trasporto dei letami, dei rifiuti vegetali, del compost e anche per trasportare i materiali che servono alla costruzione e alla progettazione dell’orto.
+
+La carriola più tradizionale è in metallo e ha una ruota in gomma, ma esistono anche modelli più moderni costruiti con materiali plastici molto resistenti e più leggeri. In commercio, nei negozi specializzati, è possibile trovare carriole pieghevoli in tela impermeabile che però non possono essere utilizzate in tutte le circostanze.<br><br>
+
+Coltello da innesto<br>
+
+Un attrezzo diffuso fra gli orticultori è sicuramente il coltello da innesto; la sua struttura dipende a seconda del tipo di innesto che si deve effettuare.
+
+Nel caso di innesti a corona si utilizzano coltelli a lama fissa noti anche come coltelli a ronchetto (o a falcetto).
+
+Per effettuare gli innesti a spacco si ricorre solitamente a coltelli a fenditoio la cui lama ha una forma squadrata.
+
+Per gli innesti a doppio spacco inglese e per gli innesti a corona si ricorre ai coltelli a innesto di tipo germanico.
+
+Nel caso di innesto a pezza si può usare il coltello a doppia lama, mentre per l’innesto a zufolo è consigliabile utilizzare il coltello da innesto a quattro lame.
+
+L’innesto a triangolo, non particolarmente comune, viene effettuato con il coltello a triangolo, mentre l’innesto a gemma richiede l’uso di un coltello dotato di una sporgenza sulla porzione opposta alla lama.<br><br>
+
+Forbici<br>
+
+Nell’orto se ne fa un uso piuttosto marginale, ma è bene che siano presenti fra gli attrezzi dell’orticultore perché possono tornare utili per eseguire alcuni lavoretti.
+
+Una particolare tipologia di forbici è quella delle forbici da innesto; sono generalmente più costose dei coltelli da innesto, ma permettono di realizzare le incisioni con maggiore facilità.<br><br>
+
+Seghetto per potatura<br>
+
+Il seghetto per potatura sono degli strumenti non eccessivamente grandi che richiamano vagamente la forma dei coltelli a lama richiudibili. In commercio si trovano anche modelli professionali con lame a dentatura particolare e a orientamento decrescente.<br><br>
+
+Foraterra<br>
+
+Il foraterra è uno strumento in legno o in plastica dotato di un’estremità a forma di cono che serve per fare le buche in terra necessarie ad accogliere le piante che vengono tolte dal semenzaio oppure quelle che vengono acquistate nei vivai.<br><br>
+
+Annaffiatoio<br>
+
+L’annaffiatoio è utile per sostituire l’annaffiatura con il tubo di gomma in quei casi in cui questa non è indicata, per esempio subito dopo il trapianto delle piante.<br><br>
+
+Sgorbia<br>
+
+La sgorbia è un’asta in metallo la cui parte terminale è a forma di coda di rondine; serve a recidere gli asparagi o a togliere dal terreno le radici a fittone più profonde. La sgorbia viene anche chiamata da alcuni estirpa-asparagi.<br><br>
+
+Piantabulbi<br>
+
+Inserire il piantabulbi fra gli attrezzi fondamentali è sicuramente un po’ forzato, ma certamente questo attrezzo in metallo a forma di cono tronco e dotato di un’impugnatura nella parte più larga e con un’estremità inferiore affilata e dentata, è sicuramente un oggetto molto utile a chi pratica l’orticoltura e il giardinaggio. Il piantabulbi consente di scavare piccole buche nel terreno estraendo comodamente la terra; si usa infilandolo nel terreno e premendo con una certa forza sull’impugnatura. Il piantabulbi è quindi uno strumento molto utile quando si deve piantare, interrare e praticare buchi nel terreno per i più svariati motivi.<br><br>
+
+Motozappa<br>
+
+orto attrezziPer orti più grandi, ma comunque con un’estensione inferiore ai 1.000 metri quadrati, può essere utile l’ausilio di una motozappa, un attrezzo a motore che velocizza molto determinati lavori (taglio delle erbe e fresatura). Si tratta sostanzialmente di una macchina con un motore a bassa potenza (di solito 8 cavalli) dotata di una fresa rotativa e di uno sperone. La motozappa con la fresa sminuzza la terra; lo sperone, che può essere alzato o abbassato, serve a impostare la profondità della lavorazione. La motozappa è dotata di un manubrio a forma di V sul quale si trovano generalmente tutti i comandi; viene spostata dall’operatore che la segue stando in piedi. La motozappa viene in genere avviata grazie a una fune a strappo, ma vi sono modelli (più costosi) nei quali l’accensione è di tipo elettrico.<br><br>
+
+Motocoltivatore<br>
+
+Per orti particolarmente estesi (estensione maggiore di 1.000 metri quadrati) è possibile utilizzare una variante della motozappa, il motocoltivatore. Il motore del motocoltivatore ha una potenza mediamente superiore di quella della motozappa; in genere infatti si parte dai 10 cavalli di potenza e si può arrivare anche ai 15. Sistema di avviamento e manubrio sono simili a quelli della motozappa. Oltre a essere dotata di fresa, al motocoltivatore si possono collegare altri attrezzi utili alla lavorazione del terreno (aratro, barra falciante, seminatrice ecc.).<br><br>
+
+Una raccomandazione importante<br>
+
+Una raccomandazione che si può dare per tutti gli attrezzi da orto, sia per quelli più semplici che per quelli più sofisticati, è quella di ripulirli con cura alla fine delle lavorazioni; se la manutenzione sarà accurata i nostri attrezzi dureranno molto a lungo e manterranno la loro efficacia evitandoci inutili spese. Durante la pulizia è bene indossare dei guanti. Le lame vanno pulite e asciugate accuratamente e, nel caso, può essere utile lubrificare le parti mobili e affilare le lame. Gli attrezzi non vanno mai lasciati sparsi per l’orto, ma riposti in un luogo al riparo dalla pioggia e tenuto sempre pulito.<br>
  </strong>
   <center>
   <br>
   <br>
- <img src="./assets/img/fertilizzante.jpg" width=800; height=300; >
+ <img src="./assets/img/attrezzi.jpg.jpg" width=800; height=300; >
           </center>        	
 					
                  
