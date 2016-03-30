@@ -321,7 +321,11 @@ header('Location: login.php');
  $idOrto=$_GET["id"];
  $nomeOrto=$connessione_al_server->query("SELECT nome from orto where ID_orto='$idOrto'");
  while($cicle=$nomeOrto->fetch_array(MYSQLI_ASSOC))
- echo "<label class='nome-orto'>".$cicle['nome']."</label>";
+ echo "<div>
+      <label style='display:inline-block' class='nome-orto'>".$cicle['nome']."</label>"; //STAMPO NOME DELL'ORTO 
+$quantita=$connessione_al_server->query("SELECT count(*) as quantita from piante_piantate where ID_orto=$idOrto");
+while($cicle=$quantita->fetch_array(MYSQLI_ASSOC))
+echo "<div style='display:inline-block;float:right;' class='alert alert-info'>numero di piante: ".$cicle['quantita']."</span></div></div>";
  ?>			  
  <div class="contenitore-tabella">
   <button onclick="tabellaONOFF()">MOSTRA</button>
@@ -332,7 +336,7 @@ header('Location: login.php');
 if(session_id() == '') {
     session_start();
 }
-$utenteAttuale=$_SESSION['ID_utente'];
+/*$utenteAttuale=$_SESSION['ID_utente'];
 $query = $connessione_al_server->query("select *from tabpiante where ID_piante in(select ID_pianta from piante_piantate where ID_orto=$idOrto )");
 while($cicle=$query->fetch_array(MYSQLI_ASSOC)){ 
     $id=$cicle['ID_piante'];
@@ -349,6 +353,39 @@ while($cicle=$query->fetch_array(MYSQLI_ASSOC)){
      </tr>  "; 
     
 }
+echo "</table>";*/
+$utenteAttuale=$_SESSION['ID_utente'];
+$query = $connessione_al_server->query("select distinct frutto from tabpiante where ID_piante in(select ID_pianta from piante_piantate where ID_orto=$idOrto )"); //PRENDO SOLO I NOMI DEI FRUTTI 1 VOLTA SOLA
+while($cicle=$query->fetch_array(MYSQLI_ASSOC)){ 
+     echo "<tr>
+	 <td><button style='width:20px' onclick='mostra()'>V</button></td>
+	 <td>".$cicle['frutto']." </td>
+	  </tr>";
+	 $cont=0;
+	// echo "<tr><td><button style='width:15px' onclick='mostra()'>V</button></td></tr>";
+	$frutto=$cicle['frutto'];
+$query2 = $connessione_al_server->query("select * from tabpiante where ID_piante in(select ID_pianta from piante_piantate where ID_orto=$idOrto ) and frutto='$frutto'"); //seleziono solo le info di quel frutto
+while($cicle2=$query2->fetch_array(MYSQLI_ASSOC)){ 
+    $id=$cicle2['ID_piante']; 
+	
+	
+echo "
+      
+    <td class='caselleTabellaOrti'>" .$cicle2['nome']."</td>
+    <td class='caselleTabellaOrti'>".$cicle2['frutto']."</td>
+    <td class='caselleTabellaOrti'>".$cicle2['fiori']."</td>
+    <td class='caselleTabellaOrti'>".$cicle2['foglie']."</td>
+    <td class='caselleTabellaOrti'>".$cicle2['dimensione']."</td>
+    <td class='caselleTabellaOrti'>".$cicle2['terreno']."</td>
+    <td class='caselleTabellaOrti'>".$cicle2['irrigazione']."</td>
+    <td><a href='assets/PHP/delete.php?id=$id&idOrto=$idOrto'><i class='fa fa-trash-o'></i></a></td>
+       "; 
+	 
+} 
+$cont++;
+}	 
+
+
 echo "</table>";
 $query10 = $connessione_al_server->query("select frutto from tabpiante");
 echo"<form method='GET' action='assets/PHP/inserirePianta.php'>
@@ -507,6 +544,21 @@ else
 {
 temp.classList.add("tabellaOFF");
 temp.classList.remove("tabellaON");
+}
+}
+
+function mostra()
+{
+	var temp1=document.getElementById($cont);
+	if(temp1.classList.contains("tabellaOFF")) //SE TABELLAOFF SI TROVA NEL ELEMENTO, SOSTITUISCILA CON TABELLAON
+{
+temp1.classList.add('tabellaON');
+temp1.classList.remove('tabellaOFF');
+}
+else
+{
+temp1.classList.add("tabellaOFF");
+temp1.classList.remove("tabellaON");
 }
 }
 </script>
