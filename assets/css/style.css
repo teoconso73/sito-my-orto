@@ -988,7 +988,7 @@ PANELS CONFIGURATIONS
 
 .pn {
 	height: 250px;
-	box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
+	box-shadow: 3px 4px 2px rgba(102, 103, 100, 0.55);
 }
 
 .pn:hover {
@@ -2358,5 +2358,8 @@ padding-bottom: 25px;
 color:white;
 background-color:#4fc1e9;
 text-align:center;
+box-shadow: 3px 4px 2px rgba(102, 103, 100, 0.55);
+}
+.pn:hover{
 box-shadow: 4px 4px 2px rgba(102, 103, 101, 0.69);
 }

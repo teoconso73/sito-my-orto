@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 session_start();
 //include("/assets/PHP/login.php"); 
 include("/assets/PHP/DB_connect.php");
@@ -364,8 +364,8 @@ INSERISCI temperatura arduino<input name="tem">
 
 </form> -->
 <br>
-<div class="col-sm-3 mb">
-<div class="numero-orti">
+<div class="col-lg-4 col-md-4 col-sm-4 mb">
+<div id="num-orti" class="numero-orti pn">
 <i class="fa fa-leaf" style="font-size:50px;"></i><br>
 <span>NUMERO DI ORTI </span><br>
 
@@ -376,15 +376,39 @@ while($cicle=$numOrti->fetch_assoc())
 ?>
 </div>
 </div>
-  <?php 
-  if(isset($_GET["tem"]) && $_GET["tem"]>0)
-  {
-	echo $_GET["tem"];
-	 echo"  <script>$( document ).ready(function() {
-    notifyMe(".$_GET["tem"].");
-}); </script>";
-  }
-      ?>            
+<?php
+$apiURL="http://api.openweathermap.org/data/2.5/weather?q=CUENCA&lang=it&appid=65cedfc44104eebe213e05ec9b3f8c9f";
+$weather_data=file_get_contents($apiURL);
+$json=json_decode($weather_data,TRUE);
+$temperatura=intval($json['main']['temp']-273); //converto in celsius e trasformo in intero
+$descrizione=$json['weather'][0]['description'];
+$nome=$json['name'];
+$umidita=$json['main']['humidity'];
+echo '<div class="col-lg-4 col-md-4 col-sm-4 mb">
+							<div class="weather-3 pn centered">
+							<img style="width:50px;height:50px"src="http://openweathermap.org/img/w/'.$json['weather'][0]['icon'].'.png"</img>';
+							if($json["weather"][0]["main"]=="Clear")
+								echo '<i class="fa fa-sun-o"></i></i>';
+							else echo '<i class="fa fa-cloud"></i>';
+								echo '<h1>'.$temperatura.'° C</h1>
+								<div class="info">
+									<div class="row">
+											<h3 class="centered">'.$nome.'</h3>
+										<div class="col-sm-6 col-xs-6 pull-left">
+											<p class="goleft"><i class="fa fa-tint"></i> '.$umidita.'%</p>
+										</div>
+										<div class="col-sm-6 col-xs-6 pull-right">
+											<p class="goright"><i class="fa fa-flag"></i> 15 MPH</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>';
+/*echo "Città:".$nome."<br>";
+echo "".$descrizione."<br>";
+echo "temperatura:".$temperatura."<br>";
+echo "Umidità:".$umidita." %<br>";*/
+?>          
 
 					
                  
