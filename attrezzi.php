@@ -1,7 +1,8 @@
 <?php
 session_start();
 //include("/assets/PHP/login.php"); 
-//include("/assets/PHP/DB_connect.php")
+include("/assets/PHP/DB_connect.php");
+include ("/assets/PHP/popupNewOrto.php");
 if($_SESSION['logged']==false)
 header('Location: login.php');
 ?>
@@ -16,14 +17,15 @@ header('Location: login.php');
     
     
 
-    <title>MyOrto-Home</title>
+    <title>Attrezzi</title>
     
 
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
+	 <link href="assets/css/stile.css" rel="stylesheet">
     <!--external css-->
     <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-   
+    <link rel="stylesheet" type="text/css" href="assets/css/zabuto_calendar.css">
     <link rel="stylesheet" type="text/css" href="assets/js/gritter/css/jquery.gritter.css" />
     <link rel="stylesheet" type="text/css" href="assets/lineicons/style.css">    
     
@@ -32,6 +34,28 @@ header('Location: login.php');
     <link href="assets/css/style-responsive.css" rel="stylesheet">
 
     <script src="assets/js/chart-master/Chart.js"></script>
+	
+	    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/jquery-1.8.3.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="assets/js/jquery.scrollTo.min.js"></script>
+    <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="assets/js/jquery.sparkline.js"></script>
+
+
+    <!--common script for all pages-->
+    <script src="assets/js/common-scripts.js"></script>
+    
+    <script type="text/javascript" src="assets/js/gritter/js/jquery.gritter.js"></script>
+    <script type="text/javascript" src="assets/js/gritter-conf.js"></script>
+
+    <!--script for this page-->
+    <script src="assets/js/sparkline-chart.js"></script>    
+	<script src="assets/js/zabuto_calendar.js"></script>
+    <script src="assets/js/notify.js"></script>
+
     
  
  
@@ -216,11 +240,14 @@ header('Location: login.php');
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
 			  <?php
-             $connessione_al_server=mysql_connect("localhost","root","");
-			  mysql_select_db("my_project0101",$connessione_al_server);
+              
               $iduser=$_SESSION['ID_utente']; //oppure $_SESSION['ID_UTENTE']  ISSET..... S SESSION ID UTENTE è DA SETTARE NELL ALTRO FILe(DI LOGIN) O IL FILE CHE SARà
-              $sql=mysql_query("SELECT * FROM users WHERE ID_utente='$iduser'")or DIE('query non riuscita'.mysql_error());
-			  $result=mysql_fetch_assoc($sql);
+              $sql=$connessione_al_server->query("SELECT * FROM users WHERE ID_utente='$iduser'")or DIE('query non riuscita'.mysql_error());
+			   if(!$sql){
+				printf("Connect failed: %s\n",$sql->connect_error);
+				exit();
+				}
+			  $result=$sql->fetch_assoc();
               $username=$result['username'];
 				//echo '<p="centered"><a href="profile.html"><img src="data:image/jpeg;base64,'.base64_encode( $result['avatar'] ).'"class="img-circle" width="60"</a></p>/>';
 			echo '<div style=margin-left:25%; text-align:center"><a href="profiloUtente.php"><img src="data:image/jpeg;base64,'.base64_encode( $result['avatar'] ).'" class="img-circle" width="100"/></div>';
@@ -243,11 +270,17 @@ header('Location: login.php');
                           <span>I miei orti</span>
                       </a>
                       <ul class="sub">
-                     
-                          <li><a  href="paginaOrto.php">Orto 1</a></li>
-                          <li><a  href="general.html">General</a></li>
+                     <?php //STAMPO IL NOME DEI MIEI ORTI
+                           $query = $connessione_al_server->query("select * from orto where ID_utente=$iduser");
+                           while($cicle=$query->fetch_array(MYSQLI_ASSOC)){
+                           $idOrto=$cicle['ID_orto'];
+                           echo "<li><a  href='paginaOrto.php?id=$idOrto'>".$cicle['nome']."</a></li>";
+                           }
+                           ?>
+						  <li><a  href="general.html">General</a></li>
                           <li><a  href="buttons.html">Buttons</a></li>
                           <li><a  href="panels.html">Panels</a></li>
+						  <li><a  data-toggle="modal" href="#popupNewOrto">Nuovo Orto <i class="fa fa-plus" style="font-size: 8px;"></i></a></li>
                       </ul>
                   
 
@@ -307,6 +340,7 @@ header('Location: login.php');
                           <li><a  href="Irrigazione.php">Irrigazione</a></li>
                           <li><a  href="Fertilizzazione.php">Fertlizzazione</a></li>
                           <li><a  href="Proprieta_ortaggi.php">Propietà ortaggi</a></li>
+                          
                           <li><a  href="Accessori_utili.php">Accessori utili</a></li>
                       </ul>
                   </li>
@@ -326,7 +360,7 @@ header('Location: login.php');
 
               <div class="row"></div> 
               <center>
-              <h2>ATTREZZI PER L' ORTO </h2>
+              <h2 id="titolo">ATTREZZI PER L' ORTO </h2>
               </center>
               <br>
               <br>
@@ -438,7 +472,7 @@ Una raccomandazione che si può dare per tutti gli attrezzi da orto, sia per que
   <center>
   <br>
   <br>
- <img src="./assets/img/attrezzi.jpg.jpg" width=800; height=300; >
+ <img src="./assets/img/attrezzi.jpg" width=800; height=300; >
           </center>        	
 					
                  
