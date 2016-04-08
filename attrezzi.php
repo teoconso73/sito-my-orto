@@ -216,11 +216,14 @@ header('Location: login.php');
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
 			  <?php
-            $connessione_al_server=mysql_connect("localhost","root","");
-			  mysql_select_db("my_project0101",$connessione_al_server);
+				include("assets/PHP/DB_connect.php");
               $iduser=$_SESSION['ID_utente']; //oppure $_SESSION['ID_UTENTE']  ISSET..... S SESSION ID UTENTE è DA SETTARE NELL ALTRO FILe(DI LOGIN) O IL FILE CHE SARà
-              $sql=mysql_query("SELECT * FROM users WHERE ID_utente='$iduser'")or DIE('query non riuscita'.mysql_error());
-			  $result=mysql_fetch_assoc($sql);
+                            $sql=$connessione_al_server->query("SELECT * FROM users WHERE ID_utente='$iduser'");
+			  if(!$sql){
+				printf("Connect failed: %s\n",$sql->connect_error);
+				exit();
+				}
+			  $result=$sql->fetch_assoc();
               $username=$result['username'];
 				//echo '<p="centered"><a href="profile.html"><img src="data:image/jpeg;base64,'.base64_encode( $result['avatar'] ).'"class="img-circle" width="60"</a></p>/>';
 			echo '<div style=margin-left:25%; text-align:center"><a href="profiloUtente.php"><img src="data:image/jpeg;base64,'.base64_encode( $result['avatar'] ).'" class="img-circle" width="100"/></div>';
@@ -268,9 +271,9 @@ header('Location: login.php');
                           <span>Extra Pages</span>
                       </a>
                       <ul class="sub">
-                       
-                          <li><a  href="login.php">Login</a></li>
-                          <li><a  href="lock_screen.php">Lock Screen</a></li>
+                          <li><a  href="resetpassw.php">Cambia Password</a></li>
+                          <li><a  href="login.html">Login</a></li>
+                          <li><a  href="lock_screen.html">Lock Screen</a></li>
                       </ul>
                   </li>
                   <li class="sub-menu">
@@ -326,55 +329,119 @@ header('Location: login.php');
 
               <div class="row"></div> 
               <center>
-              <h2>Proprietà ortaggi </h2>
+              <h2>ATTREZZI PER L' ORTO </h2>
               </center>
               <br>
               <br>
                 
-           <strong>
-		   Gli ortaggi sono alimenti di origine vegetale appartenenti al VI e VII gruppo degli alimenti.
-La definizione "ortaggi" si riferisce ai prodotti dell'orto, ovvero tutti quei frutti, fiori, semi, foglie, fusti, radici, tuberi e bulbi che possono essere coltivati nell'orto, quindi a livello casalingo; Ortaggiè evidente che si tratta di un termine più gergale che merceologico, poiché la SCALA rispetto alla quale vengono coltivate le verdure (sinonimo) non dovrebbe creare differenze tali da poter scindere le due categorie. Tuttavia, questa piccola precisazione, che ad una prima lettura si manifesta come un piccolo cavillo etimologico, dovrebbe indurre una più accurata riflessione sulla diversità qualitativa (se realmente esistente) tra un ortaggio propriamente detto ed un vegetale analogo diffuso su larga scala; nel dettaglio, porterei all'attenzione dei lettori le disuguaglianze di:
-Livello/tecnica di produzione
-Lunghezza/durata della filiera commerciale
-Il livello/tecnica di produzione e la lunghezza/durata della filiera commerciale degli ortaggi ne possono distinguere il valore nutrizionale complessivo ed il relativo impatto sulla salute del consumatore.
+              <strong>
+Quali sono gli attrezzi fondamentali per coltivare un orto? La risposta è: dipende, perché a seconda della tipologia di orto potrebbero essere necessari strumenti anche molto costosi e tecnologici. In realtà per gli orti amatoriali gli attrezzi fondamentali sono diversi, ma tutti abbastanza semplici e relativamente costosi; è però importante che siano di buona fattura perché, se trattati con cura, potranno durare molto a lungo.<br>
+
+Nella scelta degli attrezzi da orto bisogna prendere in considerazione soprattutto la robustezza e la funzionalità; appare a tutti ovvio che, per esempio, l’ergonomicità dell’attrezzo e il suo peso debbano essere adeguati alle capacità dell’utilizzatore. Molta attenzione deve essere per esempio messa nella scelta del manico della vanga o della zappa. Esistono manici in diversi materiali: legno, metallo e plastica. Ci sentiamo di sbilanciarci verso il legno che ha dalla sua maneggevolezza e robustezza. Il legno migliore per i manici degli attrezzi da orto è il frassino, anche se il più diffuso è probabilmente il faggio.<br>
+
+Passiamo quindi a una breve rassegna degli attrezzi fondamentali per la coltivazione dell’orto.<br><br>
+
+Vanga<br>
+
+In commercio esistono diversi tipi di vanga; sostanzialmente la differenza fondamentale fra l’una e l’altra è relativa alla lama che è fissata al manico; essa può essere di forma quadrata, rettangolare o a scudo; esistono anche vanghe a rebbi, molto simili ai forconi, ma nelle prime i rebbi sono più corti e dritti; è un tipo di vanga che è particolarmente adatta alla lavorazione di quei terreni che si presentano particolarmente compatti e argillosi. La vanga è simile alla pala, ma a differenza di questa la forza utilizzata per affondare la lama del terreno è quella del piede anziché quella delle braccia; nella sua parte inferiore infatti la vanga presenta una staffa poggiapiede in metallo che serve a spingere la lama nel terreno in modo particolarmente agevole.  La vanga serve a rivoltare le zolle, a romperle e a preparare il terreno per la procedura della semina.<br><br>
+
+ Zappa<br>
+
+Come nel caso della vanga, i modelli di zappa in commercio sono diversi. Dal momento che la zappa è un attrezzo di uso abbastanza frequente nella coltivazione dell’orto è bene, al momento dell’acquisto, fare alcune prove e scegliere il modello che più riteniamo adatto alle nostre capacità e alla nostra forza. Sostanzialmente esistono zappe di due tipi; quelle con la lama appuntita e quelle a lama trapezoidale. La zappa a lama appuntita serve in particolar modo per rincalzare il terreno (la rincalzatura consiste nell’ammucchiare il terreno intorno al piede della pianta per proteggerla meglio dal freddo), mentre la zappa con la lama trapezoidale viene utilizzata per altre lavorazioni quali la rottura del terreno e delle zolle, la sarchiatura (una lavorazione che consente di estirpare le erbacce e di far respirare le radici delle piante) e la formazione dei solchi.<br><br>
+
+Pala o badile<br>
+
+La pala è un attrezzo molto simile alla vanga, ma per la lavorazione dell’orto è molto meno utilizzata. Consta sostanzialmente di un manico al quale è fissata una lama lievemente concava di forma quadrata o triangolare. Viene usata per togliere la terra o altri materiali.<br><br>
+
+Forcone<br>
 
  
-Ortaggi: quali sono?
+Con il forcone vengono eseguite diverse lavorazioni; con esso infatti si sminuzzano le zolle, si dà aria al terreno dell’orto e si eseguono gli spostamenti dei materiali organici e del letame.
 
-Come anticipato, il gruppo degli ortaggi racchiude numerose tipologie di vegetali prodotti a livello dell'orto; per avere un'idea più precisa di quali siano e del loro consumo effettivo, di seguito ne elencheremo le tipologie più note e diffuse:
-Ortaggi a frutto: sono ortaggi a frutto tutte le drupe, le bacche, gli esperidi e i pomi, quindi i pomodori, le zucchine, le melanzane, i cetrioli, le zucche e i peperoni
-Ortaggi a fiore: carciofo, cavolfiore, broccolo, asparago, fiore di zucca ecc
-Ortaggi a seme: i legumi: tutti i fagioli, ceci, cicerchie, lenticchie, piselli, fave, lupini ecc. NB. I cereali non sono considerati ortaggi poiché la loro coltivazione prevede limiti di produzione (resa per superficie) talmente elevati da NECESSITARE appezzamenti maggiori di quelli intesi per un semplice "orto"
-Ortaggi a foglia: lattughe, radicchio (verde e rosso), rucola, valeriana, borragine, spinacio, catalogna, cavolo, cavolo cappuccio, bietola, cicoria, tarassaco, ecc
-Ortaggi a fusto o a bulbo: sedano, finocchio*, cardo ecc
-Ortaggi a tubero: patata, patata americana, topinambur ecc
-Ortaggi a bulbo: finocchio*, aglio, cipolla, scalogno, porro, ecc.
+Il forcone può avere sia rebbi curvi (più comuni) e rebbi piatti; solitamente il materiale migliore è l’acciaio temprato.
 
- 
-Ortaggi: proprietà nutrizionali
+Viene anche utilizzato per rimuovere le erbe falciate e i piccoli rami e anche per dissotterrare i tuberi; in quest’ultimo caso si utilizza il forcone a denti piatti.
 
-Gli ortaggi e le verdure in genere sono alimenti vegetali che si accomunano per l'apporto di:
-Acqua
-Fibra alimentare e carboidrati NON disponibili: sia solubili che insolubili
-Carboidrati disponibili: sia semplici (fruttosio) che complessi (amido)
-Proteine a basso e medio valore biologico: medio SOLO per i legumi, basso per tutti gli altri ortaggi
-Acidi grassi di tipo insaturo: monoinsaturi e polinsaturi non essenziali (soprattutto acido oleico omega-9) e polinsaturi essenziali (soprattutto acido linoleico omega-6 e α-linolenico omega-3)
-Steroli vegetali, lecitine, antiossidanti e altre molecole utili: fitosteroli/fitoestrogeni (che ostacolano l'assorbimento del colesterolo e dovrebbero ridurre i sintomi della sindrome climaterica), lecitine (che migliorano ANCHE A LIVELLO METABOLICO la colesterolemia), polifenoli antiossidanti ecc.
-Vitamine idrosolubili e liposolubili: soprattutto vitamina C (acido ascorbico), vitamina A (retinolo equivalenti) ed acido folico
-Sali minerali: soprattutto potassio (K) e magnesio (Mg), ma anche ferro (Fe - anche se poco biodisponibile) e calcio (Ca)
-Molecole anti-nutrizionali e chelanti: ad esempio acido fitico, acido ossalico, tannini ecc, che legano alcuni sali minerali (ferro, calcio, zinco e selenio) ostacolandone l'assorbimento.
-Differenze tra ortaggi e verdure commerciali
+Rastrello
 
-Come summenzionato, le differenze tra ortaggi e verdure commerciali nascono da: livello/tecnica di produzione e dalla lunghezza/durata della filiera commerciale.
+Esistono diversi tipi di rastrello; per la lavorazione dell’orto però è necessario solo quello in metallo la cui lunghezza può variare dai 30 ai 60 cm circa; i rebbi devono essere corti; l’uso principale del rastrello è quello della livellatura del terreno, ma può servire anche per la sbriciolatura delle zolle e per la copertura delle sementi e, se necessario, per sarchiature sommarie.
 
-Livello/tecnica di produzione degli ortaggi/verdure: senza entrare troppo nello specifico, ricordiamo che per coltivare i vegetali su larga scala è necessario rispettare uno specifico disciplinare di produzione; questo, che può essere di tipo agricoltura tradizionale, lotta integrata o agricoltura biologica, impone degli standard ben precisi, i quali, se da un lato garantiscono l'uniformità delle verdure in commercio, dall'altro non lasciano spazio alla cura "dei dettagli", aspetto peculiare degli ortaggi prodotti a livello casalingo o comunque su piccola scala. Ne sono alcuni esempi: il diserbo a mano, la potatura manuale, l'utilizzo di concimi organici tipo compostum o letame, il cambio o l'aggiunta della terra, il rispetto della stagionalità, il rispetto della maturazione ecc. Tutto questo si ripercuote in maniera relativamente positiva (rispetto all'esperienza e alla dedizione del curante) sulla qualità dell'ortaggio maturo. NB. Non è comunque detto che un ortaggio DEBBA essere di qualità superiore ad una verdura commercializzata su larga scala; spesso, coltivando a livello casalingo senza l'ausilio di antiparassitari, anticrictogamici e diserbanti, le piante vengono infettate/infestate concludendo NEGATIVAMENTE il ciclo di maturazione.
+I rastrelli a denti flessibili sono utilizzati invece non tanto per la lavorazione dell’orto, ma per rimuovere le foglie secche che cadono dagli alberi.<br><br>
 
-Lunghezza/durata della filiera commerciale: per farla breve, l'ortaggio/verdura staccato o eradicato o tagliato inizia subito un processo di deterioramento enzimatico, di decomposizione e di ossidazione. Le tecniche di conservazione impiegate sui i vegetali freschi appartenenti ad una filiera lunga (refrigerazione, atmosfera controllata, atmosfera modificata ecc.) sono molto efficaci (soprattutto contro il deterioramento ossidativo e la decomposizione batterica/micotica, meno verso quello enzimatico), ma non bloccano completamente il deperimento del prodotto (soprattutto l'aspetto enzimatico). Ciò si traduce in una riduzione significativa del valore organolettico, gustativo e nutrizionale (soprattutto vitaminico) dei vegetali commercializzati in filiera lunga; dal canto loro, gli ortaggi prodotti a livello casalingo possiedono un'integrità praticamente assoluta. NB. Ricordiamo che per i consumatori è comunque possibile (quasi ovunque) approvvigionarsi presso piccoli commercianti di "filiera corta".
+Sarchiello (sarchiatore o erpicature manuale)<br>
+
+Il sarchiello è sostanzialmente un attrezzo con tre denti che viene utilizzato a mo’ di zappa e cui scopi principali sono quelli di provvedere alla rimozione delle erbacce e di arieggiare le zolle fra un ortaggio e l’altro.<br><br>
+
+Trapiantatoio<br>
+
+È la tipica paletta che non può mancare fra gli attrezzi utilizzati di chi si occupa di giardinaggio e che viene utilizzata spesso anche da chi cura l’orto. In commercio vi sono trapiantatoi in metallo, legno o plastica. Il trapiantatoio viene usato soprattutto quando si devono sradicare le piccole piante dal semenzaio per poi ripiantarle nel luogo a cui sono destinate. La lama deve essere abbastanza spessa e il manico dovrebbe essere il più ergonomico possibile visto il frequente uso che se ne fa.<br><br>
+
+Piccone<br>
+
+Raramente si usa il piccone nell’orto se non nel caso in cui non sia necessario procedere al dissodamento di terreni particolarmente compatti; può essere utile, grazie al suo unico dente lungo e appuntito, per preparare solchi piuttosto stretti o scavare buche.<br><br>
+
+Carriola<br>
+
+attrezzi da ortoLa carriola è un attrezzo indispensabile per tutti gli spostamenti laboriosi; la si usa infatti per il trasporto dei letami, dei rifiuti vegetali, del compost e anche per trasportare i materiali che servono alla costruzione e alla progettazione dell’orto.
+
+La carriola più tradizionale è in metallo e ha una ruota in gomma, ma esistono anche modelli più moderni costruiti con materiali plastici molto resistenti e più leggeri. In commercio, nei negozi specializzati, è possibile trovare carriole pieghevoli in tela impermeabile che però non possono essere utilizzate in tutte le circostanze.<br><br>
+
+Coltello da innesto<br>
+
+Un attrezzo diffuso fra gli orticultori è sicuramente il coltello da innesto; la sua struttura dipende a seconda del tipo di innesto che si deve effettuare.
+
+Nel caso di innesti a corona si utilizzano coltelli a lama fissa noti anche come coltelli a ronchetto (o a falcetto).
+
+Per effettuare gli innesti a spacco si ricorre solitamente a coltelli a fenditoio la cui lama ha una forma squadrata.
+
+Per gli innesti a doppio spacco inglese e per gli innesti a corona si ricorre ai coltelli a innesto di tipo germanico.
+
+Nel caso di innesto a pezza si può usare il coltello a doppia lama, mentre per l’innesto a zufolo è consigliabile utilizzare il coltello da innesto a quattro lame.
+
+L’innesto a triangolo, non particolarmente comune, viene effettuato con il coltello a triangolo, mentre l’innesto a gemma richiede l’uso di un coltello dotato di una sporgenza sulla porzione opposta alla lama.<br><br>
+
+Forbici<br>
+
+Nell’orto se ne fa un uso piuttosto marginale, ma è bene che siano presenti fra gli attrezzi dell’orticultore perché possono tornare utili per eseguire alcuni lavoretti.
+
+Una particolare tipologia di forbici è quella delle forbici da innesto; sono generalmente più costose dei coltelli da innesto, ma permettono di realizzare le incisioni con maggiore facilità.<br><br>
+
+Seghetto per potatura<br>
+
+Il seghetto per potatura sono degli strumenti non eccessivamente grandi che richiamano vagamente la forma dei coltelli a lama richiudibili. In commercio si trovano anche modelli professionali con lame a dentatura particolare e a orientamento decrescente.<br><br>
+
+Foraterra<br>
+
+Il foraterra è uno strumento in legno o in plastica dotato di un’estremità a forma di cono che serve per fare le buche in terra necessarie ad accogliere le piante che vengono tolte dal semenzaio oppure quelle che vengono acquistate nei vivai.<br><br>
+
+Annaffiatoio<br>
+
+L’annaffiatoio è utile per sostituire l’annaffiatura con il tubo di gomma in quei casi in cui questa non è indicata, per esempio subito dopo il trapianto delle piante.<br><br>
+
+Sgorbia<br>
+
+La sgorbia è un’asta in metallo la cui parte terminale è a forma di coda di rondine; serve a recidere gli asparagi o a togliere dal terreno le radici a fittone più profonde. La sgorbia viene anche chiamata da alcuni estirpa-asparagi.<br><br>
+
+Piantabulbi<br>
+
+Inserire il piantabulbi fra gli attrezzi fondamentali è sicuramente un po’ forzato, ma certamente questo attrezzo in metallo a forma di cono tronco e dotato di un’impugnatura nella parte più larga e con un’estremità inferiore affilata e dentata, è sicuramente un oggetto molto utile a chi pratica l’orticoltura e il giardinaggio. Il piantabulbi consente di scavare piccole buche nel terreno estraendo comodamente la terra; si usa infilandolo nel terreno e premendo con una certa forza sull’impugnatura. Il piantabulbi è quindi uno strumento molto utile quando si deve piantare, interrare e praticare buchi nel terreno per i più svariati motivi.<br><br>
+
+Motozappa<br>
+
+orto attrezziPer orti più grandi, ma comunque con un’estensione inferiore ai 1.000 metri quadrati, può essere utile l’ausilio di una motozappa, un attrezzo a motore che velocizza molto determinati lavori (taglio delle erbe e fresatura). Si tratta sostanzialmente di una macchina con un motore a bassa potenza (di solito 8 cavalli) dotata di una fresa rotativa e di uno sperone. La motozappa con la fresa sminuzza la terra; lo sperone, che può essere alzato o abbassato, serve a impostare la profondità della lavorazione. La motozappa è dotata di un manubrio a forma di V sul quale si trovano generalmente tutti i comandi; viene spostata dall’operatore che la segue stando in piedi. La motozappa viene in genere avviata grazie a una fune a strappo, ma vi sono modelli (più costosi) nei quali l’accensione è di tipo elettrico.<br><br>
+
+Motocoltivatore<br>
+
+Per orti particolarmente estesi (estensione maggiore di 1.000 metri quadrati) è possibile utilizzare una variante della motozappa, il motocoltivatore. Il motore del motocoltivatore ha una potenza mediamente superiore di quella della motozappa; in genere infatti si parte dai 10 cavalli di potenza e si può arrivare anche ai 15. Sistema di avviamento e manubrio sono simili a quelli della motozappa. Oltre a essere dotata di fresa, al motocoltivatore si possono collegare altri attrezzi utili alla lavorazione del terreno (aratro, barra falciante, seminatrice ecc.).<br><br>
+
+Una raccomandazione importante<br>
+
+Una raccomandazione che si può dare per tutti gli attrezzi da orto, sia per quelli più semplici che per quelli più sofisticati, è quella di ripulirli con cura alla fine delle lavorazioni; se la manutenzione sarà accurata i nostri attrezzi dureranno molto a lungo e manterranno la loro efficacia evitandoci inutili spese. Durante la pulizia è bene indossare dei guanti. Le lame vanno pulite e asciugate accuratamente e, nel caso, può essere utile lubrificare le parti mobili e affilare le lame. Gli attrezzi non vanno mai lasciati sparsi per l’orto, ma riposti in un luogo al riparo dalla pioggia e tenuto sempre pulito.<br>
  </strong>
   <center>
   <br>
   <br>
- <img src="./assets/img/irrigazione-a-goccia.jpg" width=400; height=300; >
+ <img src="./assets/img/attrezzi.jpg.jpg" width=800; height=300; >
           </center>        	
 					
                  
@@ -429,7 +496,7 @@ Lunghezza/durata della filiera commerciale: per farla breve, l'ortaggio/verdura 
 
     <!--script for this page-->
     <script src="assets/js/sparkline-chart.js"></script>    
-
+	
     <script src="assets/js/notify.js"></script>
     <script>$( document ).ready(function() {
     notifyMe();
