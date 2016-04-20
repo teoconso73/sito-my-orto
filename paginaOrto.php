@@ -1,7 +1,8 @@
 <?php
 session_start();
 //include("/assets/PHP/login.php"); 
-//include("/assets/PHP/DB_connect.php")
+include("/assets/PHP/DB_connect.php");
+include ("/assets/PHP/popupNewOrto.php");
 if($_SESSION['logged']==false)
 header('Location: login.php');
 ?>
@@ -209,11 +210,15 @@ header('Location: login.php');
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
 			  <?php
-             $connessione_al_server=mysql_connect("localhost","root","");
-			  mysql_select_db("my_project0101",$connessione_al_server);
-              $iduser=$_SESSION['ID_utente']; //oppure $_SESSION['ID_UTENTE']  ISSET..... S SESSION ID UTENTE è DA SETTARE NELL ALTRO FILe(DI LOGIN) O IL FILE CHE SARà
-              $sql=mysql_query("SELECT * FROM users WHERE ID_utente='$iduser'")or DIE('query non riuscita'.mysql_error());
-			  $result=mysql_fetch_assoc($sql);
+             //$connessione_al_server=mysql_connect("localhost","root","");
+			  //mysql_select_db("my_project0101",$connessione_al_server);
+             $iduser=$_SESSION['ID_utente']; //oppure $_SESSION['ID_UTENTE']  ISSET..... S SESSION ID UTENTE è DA SETTARE NELL ALTRO FILe(DI LOGIN) O IL FILE CHE SARà
+				$sql=$connessione_al_server->query("SELECT * FROM users WHERE ID_utente='$iduser'");
+			  if(!$sql){
+				printf("query non riuscita: %s\n",$sql->connect_error);
+				exit();
+					}
+			  $result=$sql->fetch_assoc();
               $username=$result['username'];
 				//echo '<p="centered"><a href="profile.html"><img src="data:image/jpeg;base64,'.base64_encode( $result['avatar'] ).'"class="img-circle" width="60"</a></p>/>';
 			echo '<div style=margin-left:25%; text-align:center"><a href="profiloUtente.php"><img src="data:image/jpeg;base64,'.base64_encode( $result['avatar'] ).'" class="img-circle" width="100"/></div>';
@@ -237,8 +242,8 @@ header('Location: login.php');
                       </a>
                       <ul class="sub"> 
                            <?php //STAMPO IL NOME DEI MIEI ORTI
-                           $query = mysql_query("select * from orto where ID_utente=$iduser");
-                           while($cicle=mysql_fetch_array($query)){
+                           $query = $connessione_al_server->query("select * from orto where ID_utente=$iduser");
+                           while($cicle=$query->fetch_array(MYSQLI_ASSOC)){
                            $idOrto=$cicle['ID_orto'];
                            echo "<li><a  href='paginaOrto.php?id=$idOrto'>".$cicle['nome']."</a></li>";
                            }
@@ -246,7 +251,7 @@ header('Location: login.php');
                           <li><a  href="general.html">General</a></li>
                           <li><a  href="buttons.html">Buttons</a></li>
                           <li><a  href="panels.html">Panels</a></li>
-                          <li><a  data-toggle="modal" href="paginaOrto.php#popupUtente3">Nuovo Orto <i class="fa fa-plus" style="font-size: 8px;"></i></a></li>
+                          <li><a  data-toggle="modal" href="#popupNewOrto">Nuovo Orto <i class="fa fa-plus" style="font-size: 8px;"></i></a></li>
                       </ul>
                   </li>
 
@@ -311,21 +316,29 @@ header('Location: login.php');
       <section id="main-content">
           <section class="wrapper">
 
-              <div class="row"></div>  
+              <div class="row"></div> 
+<?php
+ $idOrto=$_GET["id"];
+ $nomeOrto=$connessione_al_server->query("SELECT nome from orto where ID_orto='$idOrto'");
+ while($cicle=$nomeOrto->fetch_array(MYSQLI_ASSOC))
+ echo "<div>
+      <label style='display:inline-block' class='nome-orto'>".$cicle['nome']."</label>"; //STAMPO NOME DELL'ORTO 
+$quantita=$connessione_al_server->query("SELECT count(*) as quantita from piante_piantate where ID_orto=$idOrto");
+while($cicle=$quantita->fetch_array(MYSQLI_ASSOC))
+echo "<div style='display:inline-block;float:right;' class='alert alert-info'>numero di piante: ".$cicle['quantita']."</span></div></div>";
+ ?>			  
  <div class="contenitore-tabella">
- <button onclick="tabellaONOFF()">MOSTRA</button>
+  <button onclick="tabellaONOFF()">MOSTRA</button>
 <table class="table table-bordered table-striped table-condensed tabellaOFF" id="tabella"> 
 <tr><th>NOME</th><th>FRUTTO</th><th>FIORI</th><th>FOGLIE</th><th>DIMENSIONE(cm)</th><th>TERRENO</th><th>IRRIGAZIONE</th></tr>
 <?php 
-$db_connection= mysql_connect("localhost","root",""); 
-$db_selection = mysql_select_db("my_project0101",$db_connection); 
+
 if(session_id() == '') {
     session_start();
 }
-$utenteAttuale=$_SESSION['ID_utente'];
-$idOrto=$_GET["id"];
-$query = mysql_query("select *from tabpiante where ID_piante in(select ID_pianta from piante_piantate where ID_orto=$idOrto )");
-while($cicle=mysql_fetch_array($query)){ 
+/*$utenteAttuale=$_SESSION['ID_utente'];
+$query = $connessione_al_server->query("select *from tabpiante where ID_piante in(select ID_pianta from piante_piantate where ID_orto=$idOrto )");
+while($cicle=$query->fetch_array(MYSQLI_ASSOC)){ 
     $id=$cicle['ID_piante'];
     echo "<tr>
     
@@ -336,17 +349,50 @@ while($cicle=mysql_fetch_array($query)){
     <td class='caselleTabellaOrti'>".$cicle['dimensione']."</td>
     <td class='caselleTabellaOrti'>".$cicle['terreno']."</td>
     <td class='caselleTabellaOrti'>".$cicle['irrigazione']."</td>
-    <td><a href='/assets/PHP/delete.php?id=$id&idOrto=$idOrto'><i class='fa fa-trash-o'></i></a></td>
+    <td><a href='assets/PHP/delete.php?id=$id&idOrto=$idOrto'><i class='fa fa-trash-o'></i></a></td>
      </tr>  "; 
     
 }
+echo "</table>";*/
+$utenteAttuale=$_SESSION['ID_utente'];
+$query = $connessione_al_server->query("select distinct frutto from tabpiante where ID_piante in(select ID_pianta from piante_piantate where ID_orto=$idOrto )"); //PRENDO SOLO I NOMI DEI FRUTTI 1 VOLTA SOLA
+while($cicle=$query->fetch_array(MYSQLI_ASSOC)){ 
+     echo "<tr>
+	 <td><button style='width:20px' onclick='mostra()'>V</button></td>
+	 <td>".$cicle['frutto']." </td>
+	  </tr>";
+	 $cont=0;
+	// echo "<tr><td><button style='width:15px' onclick='mostra()'>V</button></td></tr>";
+	$frutto=$cicle['frutto'];
+$query2 = $connessione_al_server->query("select * from tabpiante where ID_piante in(select ID_pianta from piante_piantate where ID_orto=$idOrto ) and frutto='$frutto'"); //seleziono solo le info di quel frutto
+while($cicle2=$query2->fetch_array(MYSQLI_ASSOC)){ 
+    $id=$cicle2['ID_piante']; 
+	
+	
+echo "
+      
+    <td class='caselleTabellaOrti'>" .$cicle2['nome']."</td>
+    <td class='caselleTabellaOrti'>".$cicle2['frutto']."</td>
+    <td class='caselleTabellaOrti'>".$cicle2['fiori']."</td>
+    <td class='caselleTabellaOrti'>".$cicle2['foglie']."</td>
+    <td class='caselleTabellaOrti'>".$cicle2['dimensione']."</td>
+    <td class='caselleTabellaOrti'>".$cicle2['terreno']."</td>
+    <td class='caselleTabellaOrti'>".$cicle2['irrigazione']."</td>
+    <td><a href='assets/PHP/delete.php?id=$id&idOrto=$idOrto'><i class='fa fa-trash-o'></i></a></td>
+       "; 
+	 
+} 
+$cont++;
+}	 
+
+
 echo "</table>";
-$query10 = mysql_query("select frutto from tabpiante");
+$query10 = $connessione_al_server->query("select frutto from tabpiante");
 echo"<form method='GET' action='assets/PHP/inserirePianta.php'>
 <label>AGGIUNGI </label>
 <input type='hidden'  name='idOrto' value=$idOrto></input>" .//gli passo anche l'id dell'orto.
 "<select name='scelta'>";
-while($temp=mysql_fetch_array($query10)){ 
+while($temp=$query10->fetch_array(MYSQLI_ASSOC)){ 
     echo "<option>".$temp['frutto']."</option>";
 }
 echo "</select>";
@@ -355,48 +401,7 @@ echo "</form></div>";
 
 ?>       
                   	
-<!--inizio POPUP NUOVO ORTO-->
 
-<div id="popupUtente3" class="modal fade in" tabindex="-1" aria-hidden="false" style="display: none;">
-<div class="modal-dialog">
-<div class="modal-content">
-
-<div class="modal-header"><button class="close" type="button" data-dismiss="modal" onclick="document.getElementById('popupUtente3').style.display='none'">×</button>
-<h4 class="modal-title">Nuovo orto</h4>
-</div>
-<form method='GET' action='assets/PHP/nuovoOrto.php'>
-<div class="panel-body">
-<div class="task-content">
-  <ul class="task-list">
-     <li>
-          <div> <label class="labelUtente"> Nome Orto: </label>
-                <?php
-                $query10 = mysql_query("select Tipo from tipo");
-                echo '<input type="text" name="nomeOrto" class="modificaDatiUtente form-control" required>
-                <label class="labelUtente"> Tipo di Orto: </label>
-                <select name="tipoOrto">';
-while($temp=mysql_fetch_array($query10)){ 
-    echo "<option>".$temp['Tipo']."</option>";
-}
-echo "</select>";
-?>
-      </div>
-     </li>
-    </ul>
- </div>
- </div>
- <div class="modal-footer">
- <button class="btn btn-default" type="button" data-dismiss="modal">Cancel</button>
- <button class="btn btn-theme" type="submit" >Salva</button>
- </div>
- </form>
-
-
- </div>
- </div>
- </div>
- 
-<!--FINE POPUP NUOVO ORTO-->
 					
                  
                   
@@ -539,6 +544,21 @@ else
 {
 temp.classList.add("tabellaOFF");
 temp.classList.remove("tabellaON");
+}
+}
+
+function mostra()
+{
+	var temp1=document.getElementById($cont);
+	if(temp1.classList.contains("tabellaOFF")) //SE TABELLAOFF SI TROVA NEL ELEMENTO, SOSTITUISCILA CON TABELLAON
+{
+temp1.classList.add('tabellaON');
+temp1.classList.remove('tabellaOFF');
+}
+else
+{
+temp1.classList.add("tabellaOFF");
+temp1.classList.remove("tabellaON");
 }
 }
 </script>

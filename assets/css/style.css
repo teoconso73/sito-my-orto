@@ -420,7 +420,7 @@ ul.sidebar-menu li a.active i {
 .wrapper {
     display: inline-block;
     margin-top: 60px;
-    padding-left: 15px;
+    padding-left: 10px;
     padding-right: 15px;
     padding-bottom: 15px;
     padding-top: 0px;
@@ -988,7 +988,7 @@ PANELS CONFIGURATIONS
 
 .pn {
 	height: 250px;
-	box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
+	box-shadow: 3px 4px 2px rgba(102, 103, 100, 0.55);
 }
 
 .pn:hover {
@@ -2331,12 +2331,35 @@ color: black;
 
 .contenitore-tabella{
 display:inline-block;
-margin-top:10px;
+margin-top:0px;
 margin-left:10px;
 background:white;
 width:auto;
 height:auto;
 box-shadow: 0px 3px 3px #aab2bd;
 }
-
-
+.nome-orto{
+margin-left: 10px;
+    margin-top: -15px;
+    display: block;
+	font-family: 'Francois One';
+	font-size: 65px;
+	 font-weight: 800;
+	background-color: #B5B0B0;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: rgba(255,255,255,0.5) 0px 3px 3px;
+}
+.numero-orti{
+padding-top: 25px;
+padding-bottom: 25px;
+color:white;
+background-color:#4fc1e9;
+text-align:center;
+box-shadow: 3px 4px 2px rgba(102, 103, 100, 0.55);
+}
+.pn:hover{
+box-shadow: 4px 4px 2px rgba(102, 103, 101, 0.69);
+}

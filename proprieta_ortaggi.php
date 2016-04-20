@@ -407,7 +407,7 @@ Lunghezza/durata della filiera commerciale: per farla breve, l'ortaggio/verdura 
                         </div><!-- / calendar -->
                       
                   </div> <!-- /col-lg-3 -->
-               <! --/row -->
+               <!--/row -->
           </section>
       </section>
 </section>

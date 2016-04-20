@@ -1,7 +1,8 @@
 <?php
 session_start();
 //include("/assets/PHP/login.php"); 
-//include("/assets/PHP/DB_connect.php")
+include("/assets/PHP/DB_connect.php");
+include ("/assets/PHP/popupNewOrto.php");
 if($_SESSION['logged']==false)
 header('Location: login.php');
 ?>
@@ -16,14 +17,15 @@ header('Location: login.php');
     
     
 
-    <title>MyOrto-Home</title>
+    <title>Fertilizzazione</title>
     
 
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
+	<link href="assets/css/stile.css" rel="stylesheet">
     <!--external css-->
     <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-   
+    <link rel="stylesheet" type="text/css" href="assets/css/zabuto_calendar.css">
     <link rel="stylesheet" type="text/css" href="assets/js/gritter/css/jquery.gritter.css" />
     <link rel="stylesheet" type="text/css" href="assets/lineicons/style.css">    
     
@@ -32,6 +34,28 @@ header('Location: login.php');
     <link href="assets/css/style-responsive.css" rel="stylesheet">
 
     <script src="assets/js/chart-master/Chart.js"></script>
+	
+	    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/jquery-1.8.3.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="assets/js/jquery.scrollTo.min.js"></script>
+    <script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="assets/js/jquery.sparkline.js"></script>
+
+
+    <!--common script for all pages-->
+    <script src="assets/js/common-scripts.js"></script>
+    
+    <script type="text/javascript" src="assets/js/gritter/js/jquery.gritter.js"></script>
+    <script type="text/javascript" src="assets/js/gritter-conf.js"></script>
+
+    <!--script for this page-->
+    <script src="assets/js/sparkline-chart.js"></script>    
+	<script src="assets/js/zabuto_calendar.js"></script>
+    <script src="assets/js/notify.js"></script>
+
     
  
  
@@ -216,10 +240,15 @@ header('Location: login.php');
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
 			  <?php
+
 			include("assets/PHP/DB_connect.php");
               $iduser=$_SESSION['ID_utente']; //oppure $_SESSION['ID_UTENTE']  ISSET..... S SESSION ID UTENTE è DA SETTARE NELL ALTRO FILe(DI LOGIN) O IL FILE CHE SARà
                             $sql=$connessione_al_server->query("SELECT * FROM users WHERE ID_utente='$iduser'");
 			  if(!$sql){
+			$iduser=$_SESSION['ID_utente']; //oppure $_SESSION['ID_UTENTE']  ISSET..... S SESSION ID UTENTE è DA SETTARE NELL ALTRO FILe(DI LOGIN) O IL FILE CHE SARà
+              $sql=$connessione_al_server->query("SELECT * FROM users WHERE ID_utente='$iduser'");
+			   if(!$sql){
+
 				printf("Connect failed: %s\n",$sql->connect_error);
 				exit();
 				}
@@ -246,11 +275,17 @@ header('Location: login.php');
                           <span>I miei orti</span>
                       </a>
                       <ul class="sub">
-                     
-                          <li><a  href="paginaOrto.php">Orto 1</a></li>
-                          <li><a  href="general.html">General</a></li>
+                     <?php //STAMPO IL NOME DEI MIEI ORTI
+                           $query = $connessione_al_server->query("select * from orto where ID_utente=$iduser");
+                           while($cicle=$query->fetch_array(MYSQLI_ASSOC)){
+                           $idOrto=$cicle['ID_orto'];
+                           echo "<li><a  href='paginaOrto.php?id=$idOrto'>".$cicle['nome']."</a></li>";
+                           }
+                           ?>
+						  <li><a  href="general.html">General</a></li>
                           <li><a  href="buttons.html">Buttons</a></li>
                           <li><a  href="panels.html">Panels</a></li>
+						  <li><a  data-toggle="modal" href="#popupNewOrto">Nuovo Orto <i class="fa fa-plus" style="font-size: 8px;"></i></a></li>
                       </ul>
                   
 
@@ -329,59 +364,59 @@ header('Location: login.php');
 
               <div class="row"></div> 
               <center>
-              <h2>FERTILIZZAZIONE </h2>
+              <h2 id="titolo">FERTILIZZAZIONE </h2>
               </center>
               <br>
               <br>
                 
-              <strong>
-Per fertilizzazione s'intende l'apporto di un materiale di qualsiasi natura, detto fertilizzante, con lo scopo di migliorare uno o più aspetti della fertilità del terreno. Dal punto di vista tecnico, i fertilizzanti sono distinti in tre categorie, in funzione del tipo di fertilità con cui interagiscono.<br>
+              <div id="descrizione">
+Per fertilizzazione s'intende l'apporto di un materiale di qualsiasi natura, detto fertilizzante, con lo scopo di migliorare uno o più aspetti della fertilità del terreno. Dal punto di vista tecnico, i fertilizzanti sono distinti in tre categorie, in funzione del tipo di fertilità con cui interagiscono.<br><br>
 
-_Gli ammendanti sono quei fertilizzanti che migliorano le proprietà fisiche del terreno e, attraverso queste, influenzano le proprietà chimiche e quelle biologiche. È perciò da considerarsi ammendante un materiale che equilibri una tessitura anomala o che conferisca struttura ad un terreno incoerente o che ne migliori lo stato strutturale stabilizzandolo. Ad esempio, sono da considerarsi ammendanti, nel contesto specifico, i seguenti materiali:<br>
+_Gli ammendanti sono quei fertilizzanti che migliorano le proprietà fisiche del terreno e, attraverso queste, influenzano le proprietà chimiche e quelle biologiche. È perciò da considerarsi ammendante un materiale che equilibri una tessitura anomala o che conferisca struttura ad un terreno incoerente o che ne migliori lo stato strutturale stabilizzandolo. Ad esempio, sono da considerarsi ammendanti, nel contesto specifico, i seguenti materiali:<br><br>
 
 materiali argillosi, limitatamente all'apporto in terreni sabbiosi (azione equilibrante sulla tessitura);<br>
 
 Sabbia, limitatamente all'apporto in terreni argillosi (azione equilibrante sulla tessitura);<br>
 
-letame o altro materiale organico che incrementi il tenore di humus nel terreno (azione migliorativa e stabilizzante sulla struttura).<br>
+letame o altro materiale organico che incrementi il tenore di humus nel terreno (azione migliorativa e stabilizzante sulla struttura).<br><br>
 
-_I correttivi sono quei fertilizzanti che migliorano la reazione del terreno spostando il pH da valori anomali verso la neutralità. Potenzialmente hanno azione correttiva tutti quei materiali che sono costituzionalmente o fisiologicamente acidi o alcalini. Sono tradizionalmente considerati correttivi la calce e il calcare nei terreni a reazione acida, e lo zolfo[1] e il gesso nei terreni basici con alcalinità costituzionale (terreni calcarei). L'efficacia dei correttivi è condizionata da vari fattori:<br>
+_I correttivi sono quei fertilizzanti che migliorano la reazione del terreno spostando il pH da valori anomali verso la neutralità. Potenzialmente hanno azione correttiva tutti quei materiali che sono costituzionalmente o fisiologicamente acidi o alcalini. Sono tradizionalmente considerati correttivi la calce e il calcare nei terreni a reazione acida, e lo zolfo[1] e il gesso nei terreni basici con alcalinità costituzionale (terreni calcarei). L'efficacia dei correttivi è condizionata da vari fattori:<br><br>
 
-1)Comportamento chimico dei componenti prevalenti. In questo caso è fondamentale la composizione del correttivo e la natura chimica dei suoi componenti: le basi e gli acidi hanno un'azione correttiva più efficace dei sali, la cui azione è fondamentalmente dovuta a fenomeni di idrolisi salina o di assorbimento selettivo da parte delle piante (materiali fisiologicamente acidi o basici). Ad esempio, la calce e lo zolfo hanno un'azione correttiva più efficace, rispettivamente, del calcare e del gesso.<br>
+1)Comportamento chimico dei componenti prevalenti. In questo caso è fondamentale la composizione del correttivo e la natura chimica dei suoi componenti: le basi e gli acidi hanno un'azione correttiva più efficace dei sali, la cui azione è fondamentalmente dovuta a fenomeni di idrolisi salina o di assorbimento selettivo da parte delle piante (materiali fisiologicamente acidi o basici). Ad esempio, la calce e lo zolfo hanno un'azione correttiva più efficace, rispettivamente, del calcare e del gesso.<br><br>
                   
-2)Grado di finezza del materiale. Il grado di finezza ha riflessi sulla superficie di sviluppo ed è di particolare importanza per i correttivi rappresentati da sali poco solubili come il calcare e il gesso. Questi materiali, infatti, hanno un'efficacia relativa, come correttivi, solo se finemente macinati, mentre la frantumazione grossolana li rende sostanzialmente inerti.<br>
+2)Grado di finezza del materiale. Il grado di finezza ha riflessi sulla superficie di sviluppo ed è di particolare importanza per i correttivi rappresentati da sali poco solubili come il calcare e il gesso. Questi materiali, infatti, hanno un'efficacia relativa, come correttivi, solo se finemente macinati, mentre la frantumazione grossolana li rende sostanzialmente inerti.<br><br>
                   
-3)Potere tampone del terreno. Il complesso di scambio del terreno e, in misura minore, la composizione della frazione minerale della soluzione circolante hanno un'intrinseco potere tamponante che tende a compensare le variazioni di pH. Il potere tampone si manifesta in maniera più intensa proprio nei confronti degli interventi correttivi, in ogni caso varia in funzione delle cause che sono alla base della reazione anomale.<br>
+3)Potere tampone del terreno. Il complesso di scambio del terreno e, in misura minore, la composizione della frazione minerale della soluzione circolante hanno un'intrinseco potere tamponante che tende a compensare le variazioni di pH. Il potere tampone si manifesta in maniera più intensa proprio nei confronti degli interventi correttivi, in ogni caso varia in funzione delle cause che sono alla base della reazione anomale.<br><br>
                   
-L'opportunità di un intervento correttivo è determinata dalle reali necessità, dalla sostenibilità economica e dall'efficacia intrinseca dell'intervento, soprattutto in relazione al potere tampone del terreno. Il concorso di questi fattori rende varia notevolmente secondo il contesto:<br>
+L'opportunità di un intervento correttivo è determinata dalle reali necessità, dalla sostenibilità economica e dall'efficacia intrinseca dell'intervento, soprattutto in relazione al potere tampone del terreno. Il concorso di questi fattori rende varia notevolmente secondo il contesto:<br><br>
 
-Terreni sodici. I terreni con alcalinità di assorbimento, dovuta ad un eccesso di sodio nel complesso di scambio e di sali di sodio a idrolisi alcalina nella soluzione circolante (carbonato di sodio e bicarbonato di sodio), presentano problemi agronomici tali da rendere poco opportuna, se non del tutto sconveniente, la correzione. La scarsa vocazione agronomica è infatti dovuta agli effetti negativi del sodio sulla struttura del terreno, che prevalgono sull'interferenza, da parte del pH, con la nutrizione minerale delle piante.<br>
+Terreni sodici. I terreni con alcalinità di assorbimento, dovuta ad un eccesso di sodio nel complesso di scambio e di sali di sodio a idrolisi alcalina nella soluzione circolante (carbonato di sodio e bicarbonato di sodio), presentano problemi agronomici tali da rendere poco opportuna, se non del tutto sconveniente, la correzione. La scarsa vocazione agronomica è infatti dovuta agli effetti negativi del sodio sulla struttura del terreno, che prevalgono sull'interferenza, da parte del pH, con la nutrizione minerale delle piante.<br><br>
                   
-Terreni calcarei. I terreni con alcalinità costituzionale, dovuta ad un eccesso di calcare attivo possono essere corretti con l'apporto di zolfo o di gesso, con efficacia subordinata all'effettivo potere tampone del terreno. I correttivi acidificanti hanno un costo relativamente alto che difficilmente può essere compensato dalla remuneratività dei benefici della correzione. Va anche precisato che i terreni calcarei possono offrire buone prestazioni di produttività con un'adeguata scelta delle colture (specie agraria, cultivar, portinnesto) e con l'adozione di opportuni accorgimenti agronomici.<br>
+Terreni calcarei. I terreni con alcalinità costituzionale, dovuta ad un eccesso di calcare attivo possono essere corretti con l'apporto di zolfo o di gesso, con efficacia subordinata all'effettivo potere tampone del terreno. I correttivi acidificanti hanno un costo relativamente alto che difficilmente può essere compensato dalla remuneratività dei benefici della correzione. Va anche precisato che i terreni calcarei possono offrire buone prestazioni di produttività con un'adeguata scelta delle colture (specie agraria, cultivar, portinnesto) e con l'adozione di opportuni accorgimenti agronomici.<br><br>
                   
-Terreni acidi. In questi terreni la reazione anomala rappresenta il principale fattore limitante in quanto interferisce negativamente sulla nutrizione minerale, sia per la carenza di basi (in particolare il calcio), sia per l'insolubilizzazione del fosforo. In subordine all'effetto tampone, i terreni acidi sono perciò quelli che rispondono meglio alla correzione del pH.<br>
+Terreni acidi. In questi terreni la reazione anomala rappresenta il principale fattore limitante in quanto interferisce negativamente sulla nutrizione minerale, sia per la carenza di basi (in particolare il calcio), sia per l'insolubilizzazione del fosforo. In subordine all'effetto tampone, i terreni acidi sono perciò quelli che rispondono meglio alla correzione del pH.<br><br>
 
-_Sono concimi quei fertilizzanti che migliorano la dotazione del terreno in uno o più elementi della fertilità. Questi fertilizzanti sono perciò apportati al fine di aumentare la dotazione di un terreno povero (concimazione di fondo) o per soddisfare i fabbisogni nutritivi di una coltura senza incorrere nel depauperamento della fertilità del suolo (concimazione ordinaria di produzione).<br>
+_Sono concimi quei fertilizzanti che migliorano la dotazione del terreno in uno o più elementi della fertilità. Questi fertilizzanti sono perciò apportati al fine di aumentare la dotazione di un terreno povero (concimazione di fondo) o per soddisfare i fabbisogni nutritivi di una coltura senza incorrere nel depauperamento della fertilità del suolo (concimazione ordinaria di produzione).<br><br>
 
-I concimi sono i fertilizzanti di maggior impiego in agricoltura e il loro impiego si rende necessario soprattutto in un'agricoltura di tipo intensivo, volta ad ottenere rese unitarie elevate. In altre condizioni, il mancato ricorso alla concimazione comporta un lento ma progressivo impoverimento del terreno, che in tempi più o meno lunghi va incontro a fenomeni di insterilimento. Questo problema è particolarmente sentito nelle aree tropicali dei paesi in via di sviluppo, dove la messa a coltura dei terreni naturali, in assenza di interventi di fertilizzazione, intensifica il processo della desertificazione a causa del modesto potere assorbente del terreno e del dilavamento degli elementi nutritivi nei climi piovosi.<br>
+I concimi sono i fertilizzanti di maggior impiego in agricoltura e il loro impiego si rende necessario soprattutto in un'agricoltura di tipo intensivo, volta ad ottenere rese unitarie elevate. In altre condizioni, il mancato ricorso alla concimazione comporta un lento ma progressivo impoverimento del terreno, che in tempi più o meno lunghi va incontro a fenomeni di insterilimento. Questo problema è particolarmente sentito nelle aree tropicali dei paesi in via di sviluppo, dove la messa a coltura dei terreni naturali, in assenza di interventi di fertilizzazione, intensifica il processo della desertificazione a causa del modesto potere assorbente del terreno e del dilavamento degli elementi nutritivi nei climi piovosi.<br><br>
 
-I concimi si classificano principalmente in funzione dell'origine del materiale e della composizione chimica, con riferimento al contenuto in uno o più elementi principali della fertilità (azoto, fosforo, potassio).<br>
+I concimi si classificano principalmente in funzione dell'origine del materiale e della composizione chimica, con riferimento al contenuto in uno o più elementi principali della fertilità (azoto, fosforo, potassio).<br><br>
 
-In base al primo criterio, i concimi sono distinti in tre categorie:<br>
+In base al primo criterio, i concimi sono distinti in tre categorie:<br><br>
 
 1)Concimi organici. Sono materiali di origine biologica, animale o vegetale, utilizzati tali e quali o opportunamente trattati. Sono concimi organici, ad esempio, il letame, il compost, la pollina, ecc.
-Concimi minerali o chimici. Sono materiali ottenuti da una sintesi chimica in un processo industriale (es. l'urea) oppure dall'estrazione con eventuale trattamento industriale (es. il perfosfato minerale, il cloruro di potassio).<br>
+Concimi minerali o chimici. Sono materiali ottenuti da una sintesi chimica in un processo industriale (es. l'urea) oppure dall'estrazione con eventuale trattamento industriale (es. il perfosfato minerale, il cloruro di potassio).<br><br>
                   
-2)Concimi organominerali. Sono materiali ottenuti dalla miscelazione di concimi organici con concimi chimici o dal trattamento di materiali organici con agenti chimici.<br>
+2)Concimi organominerali. Sono materiali ottenuti dalla miscelazione di concimi organici con concimi chimici o dal trattamento di materiali organici con agenti chimici.<br><br>
                   
-In base al secondo criterio, applicato fondamentalmente per i concimi chimici, i concimi sono così classificati:<br>
+In base al secondo criterio, applicato fondamentalmente per i concimi chimici, i concimi sono così classificati:<br><br>
 
-1)Concimi ternari: contengono i tre macroelementi principali della fertilità (NPK).<br>
+1)Concimi ternari: contengono i tre macroelementi principali della fertilità (NPK).<br><br>
                   
-2)Concimi binari: contengono solo due macroelementi principali della fertilità. Si distinguono in azoto-potassici (NK), azoto-fosfatici (NP) e fosfopotassici (PK).<br>
+2)Concimi binari: contengono solo due macroelementi principali della fertilità. Si distinguono in azoto-potassici (NK), azoto-fosfatici (NP) e fosfopotassici (PK).<br><br>
                   
 3)Concimi semplici: contengono un solo macroelemento principale della fertilità, associato eventualmente ad uno o più macroelementi secondari (calcio, zolfo, magnesio) o a microlementi (ferro, rame, boro, ecc.). Si distinguono in azotati, fosfatici e potassici.
- </strong>
+              </div>
   <center>
   <br>
   <br>
@@ -415,7 +450,7 @@ In base al secondo criterio, applicato fondamentalmente per i concimi chimici, i
                         </div><!-- / calendar -->
                       
                   </div> <!-- /col-lg-3 -->
-               <! --/row -->
+               <!--/row -->
           </section>
       </section>
 </section>

@@ -1,7 +1,8 @@
-<?php
+﻿<?php
 session_start();
 //include("/assets/PHP/login.php"); 
-//include("/assets/PHP/DB_connect.php")
+include("/assets/PHP/DB_connect.php");
+include ("/assets/PHP/popupNewOrto.php");
 if($_SESSION['logged']==false)
 header('Location: login.php');
 ?>
@@ -238,11 +239,14 @@ header('Location: login.php');
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
 			  <?php
-              $connessione_al_server=mysql_connect("localhost","root","");
-			  mysql_select_db("my_project0101",$connessione_al_server);
+              
               $iduser=$_SESSION['ID_utente']; //oppure $_SESSION['ID_UTENTE']  ISSET..... S SESSION ID UTENTE è DA SETTARE NELL ALTRO FILe(DI LOGIN) O IL FILE CHE SARà
-              $sql=mysql_query("SELECT * FROM users WHERE ID_utente='$iduser'")or DIE('query non riuscita'.mysql_error());
-			  $result=mysql_fetch_assoc($sql);
+              $sql=$connessione_al_server->query("SELECT * FROM users WHERE ID_utente='$iduser'")or DIE('query non riuscita'.mysql_error());
+			   if(!$sql){
+				printf("Connect failed: %s\n",$sql->connect_error);
+				exit();
+				}
+			  $result=$sql->fetch_assoc();
               $username=$result['username'];
 				//echo '<p="centered"><a href="profile.html"><img src="data:image/jpeg;base64,'.base64_encode( $result['avatar'] ).'"class="img-circle" width="60"</a></p>/>';
 			echo '<div style=margin-left:25%; text-align:center"><a href="profiloUtente.php"><img src="data:image/jpeg;base64,'.base64_encode( $result['avatar'] ).'" class="img-circle" width="100"/></div>';
@@ -265,11 +269,17 @@ header('Location: login.php');
                           <span>I miei orti</span>
                       </a>
                       <ul class="sub">
-                     
-                          <li><a  href="paginaOrto.php">Orto 1</a></li>
-                          <li><a  href="general.html">General</a></li>
+                     <?php //STAMPO IL NOME DEI MIEI ORTI
+                           $query = $connessione_al_server->query("select * from orto where ID_utente=$iduser");
+                           while($cicle=$query->fetch_array(MYSQLI_ASSOC)){
+                           $idOrto=$cicle['ID_orto'];
+                           echo "<li><a  href='paginaOrto.php?id=$idOrto'>".$cicle['nome']."</a></li>";
+                           }
+                           ?>
+						  <li><a  href="general.html">General</a></li>
                           <li><a  href="buttons.html">Buttons</a></li>
                           <li><a  href="panels.html">Panels</a></li>
+						  <li><a  data-toggle="modal" href="#popupNewOrto">Nuovo Orto <i class="fa fa-plus" style="font-size: 8px;"></i></a></li>
                       </ul>
                   
 
@@ -348,22 +358,57 @@ header('Location: login.php');
           <section class="wrapper">
 
               <div class="row"></div>  
-                 					    <form action="index.php" method="GET">
+             <!--  <form action="index.php" method="GET">
 INSERISCI temperatura arduino<input name="tem">
 <button type="submit">invia</button>
 
-</form>
+</form> -->
 <br>
+<div class="col-lg-4 col-md-4 col-sm-4 mb">
+<div id="num-orti" class="numero-orti pn">
+<i class="fa fa-leaf" style="font-size:50px;"></i><br>
+<span>NUMERO DI ORTI </span><br>
 
-  <?php 
-  if(isset($_GET["tem"]) && $_GET["tem"]>0)
-  {
-	echo $_GET["tem"];
-	 echo"  <script>$( document ).ready(function() {
-    notifyMe(".$_GET["tem"].");
-}); </script>";
-  }
-      ?>            
+<?php //STAMPA NUMERO DI ORTI
+$numOrti=$connessione_al_server->query("SELECT 	count(*) as 'numero' from orto where ID_utente=$iduser ");
+while($cicle=$numOrti->fetch_assoc())
+	echo "<span style='font-size:30px;color:red; font-weight:bold'>".$cicle['numero']."</span>";
+?>
+</div>
+</div>
+<?php
+$apiURL="http://api.openweathermap.org/data/2.5/weather?q=CUENCA&lang=it&appid=65cedfc44104eebe213e05ec9b3f8c9f";
+$weather_data=file_get_contents($apiURL);
+$json=json_decode($weather_data,TRUE);
+$temperatura=intval($json['main']['temp']-273); //converto in celsius e trasformo in intero
+$descrizione=$json['weather'][0]['description'];
+$nome=$json['name'];
+$umidita=$json['main']['humidity'];
+echo '<div class="col-lg-4 col-md-4 col-sm-4 mb">
+							<div class="weather-3 pn centered">
+							<img style="width:50px;height:50px"src="http://openweathermap.org/img/w/'.$json['weather'][0]['icon'].'.png"</img>';
+							if($json["weather"][0]["main"]=="Clear")
+								echo '<i class="fa fa-sun-o"></i></i>';
+							else echo '<i class="fa fa-cloud"></i>';
+								echo '<h1>'.$temperatura.'° C</h1>
+								<div class="info">
+									<div class="row">
+											<h3 class="centered">'.$nome.'</h3>
+										<div class="col-sm-6 col-xs-6 pull-left">
+											<p class="goleft"><i class="fa fa-tint"></i> '.$umidita.'%</p>
+										</div>
+										<div class="col-sm-6 col-xs-6 pull-right">
+											<p class="goright"><i class="fa fa-flag"></i> 15 MPH</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>';
+/*echo "Città:".$nome."<br>";
+echo "".$descrizione."<br>";
+echo "temperatura:".$temperatura."<br>";
+echo "Umidità:".$umidita." %<br>";*/
+?>          
 
 					
                  

@@ -1,7 +1,8 @@
 <?php
 session_start();
 //include("/assets/PHP/login.php"); 
-//include("/assets/PHP/DB_connect.php")
+include("/assets/PHP/DB_connect.php");
+include ("/assets/PHP/popupNewOrto.php");
 if($_SESSION['logged']==false)
 header('Location: login.php');
 ?>
@@ -240,9 +241,17 @@ header('Location: login.php');
                           <span>I miei orti</span>
                       </a>
                       <ul class="sub">
+					  <?php //STAMPO IL NOME DEI MIEI ORTI
+                           $query = $connessione_al_server->query("select * from orto where ID_utente=$iduser");
+                           while($cicle=$query->fetch_array(MYSQLI_ASSOC)){
+                           $idOrto=$cicle['ID_orto'];
+                           echo "<li><a  href='paginaOrto.php?id=$idOrto'>".$cicle['nome']."</a></li>";
+                           }
+                           ?>
                           <li><a  href="general.html">General</a></li>
                           <li><a  href="buttons.html">Buttons</a></li>
                           <li><a  href="panels.html">Panels</a></li>
+						  <li><a  data-toggle="modal" href="#popupNewOrto">Nuovo Orto <i class="fa fa-plus" style="font-size: 8px;"></i></a></li>
                       </ul>
                   </li>
 
@@ -405,7 +414,7 @@ echo '<div id="popupUtente3" class="modal fade in" tabindex="-1" aria-hidden="fa
 //$connessione_al_server=mysql_connect("localhost","root","");
 //mysql_select_db("my_project0101",$connessione_al_server);
 $iduser=$_SESSION['ID_utente']; //oppure $_SESSION['ID_UTENTE']  ISSET..... S SESSION ID UTENTE è DA SETTARE NELL ALTRO FILe(DI LOGIN) O IL FILE CHE SARà
-$sql=$connessione_al_server->query("SELECT * FROM users WHERE ID_utente='$iduser'");
+$sql=$connessione_al_server->query("SELECT * FROM users WHERE ID_utente='$iduser");
 if($sql->connect_errno){
 printf("query non riuscita: %s\n",$sql->connect_error);
 exit();
