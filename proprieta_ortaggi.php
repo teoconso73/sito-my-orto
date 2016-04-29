@@ -1,4 +1,4 @@
-<?php
+ <?php
 session_start();
 //include("/assets/PHP/login.php"); 
 //include("/assets/PHP/DB_connect.php")
@@ -21,6 +21,7 @@ header('Location: login.php');
 
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
+	<link href="assets/css/stile.css" rel="stylesheet">
     <!--external css-->
     <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
    
@@ -216,14 +217,11 @@ header('Location: login.php');
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
 			  <?php
-				include("assets/PHP/DB_connect.php");
+            $connessione_al_server=mysql_connect("localhost","root","");
+			  mysql_select_db("my_project0101",$connessione_al_server);
               $iduser=$_SESSION['ID_utente']; //oppure $_SESSION['ID_UTENTE']  ISSET..... S SESSION ID UTENTE è DA SETTARE NELL ALTRO FILe(DI LOGIN) O IL FILE CHE SARà
-               $sql=$connessione_al_server->query("SELECT * FROM users WHERE ID_utente='$iduser'");
-			  if(!$sql){
-				printf("Connect failed: %s\n",$sql->connect_error);
-				exit();
-				}
-			  $result=$sql->fetch_assoc();
+              $sql=mysql_query("SELECT * FROM users WHERE ID_utente='$iduser'")or DIE('query non riuscita'.mysql_error());
+			  $result=mysql_fetch_assoc($sql);
               $username=$result['username'];
 				//echo '<p="centered"><a href="profile.html"><img src="data:image/jpeg;base64,'.base64_encode( $result['avatar'] ).'"class="img-circle" width="60"</a></p>/>';
 			echo '<div style=margin-left:25%; text-align:center"><a href="profiloUtente.php"><img src="data:image/jpeg;base64,'.base64_encode( $result['avatar'] ).'" class="img-circle" width="100"/></div>';
@@ -407,7 +405,7 @@ Lunghezza/durata della filiera commerciale: per farla breve, l'ortaggio/verdura 
                         </div><!-- / calendar -->
                       
                   </div> <!-- /col-lg-3 -->
-               <!--/row -->
+               <! --/row -->
           </section>
       </section>
 </section>

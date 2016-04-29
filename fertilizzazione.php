@@ -240,15 +240,10 @@ header('Location: login.php');
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
 			  <?php
-
-			include("assets/PHP/DB_connect.php");
+              
               $iduser=$_SESSION['ID_utente']; //oppure $_SESSION['ID_UTENTE']  ISSET..... S SESSION ID UTENTE è DA SETTARE NELL ALTRO FILe(DI LOGIN) O IL FILE CHE SARà
-                            $sql=$connessione_al_server->query("SELECT * FROM users WHERE ID_utente='$iduser'");
-			  if(!$sql){
-			$iduser=$_SESSION['ID_utente']; //oppure $_SESSION['ID_UTENTE']  ISSET..... S SESSION ID UTENTE è DA SETTARE NELL ALTRO FILe(DI LOGIN) O IL FILE CHE SARà
-              $sql=$connessione_al_server->query("SELECT * FROM users WHERE ID_utente='$iduser'");
+              $sql=$connessione_al_server->query("SELECT * FROM users WHERE ID_utente='$iduser'")or DIE('query non riuscita'.mysql_error());
 			   if(!$sql){
-
 				printf("Connect failed: %s\n",$sql->connect_error);
 				exit();
 				}
@@ -345,6 +340,7 @@ header('Location: login.php');
                           <li><a  href="Irrigazione.php">Irrigazione</a></li>
                           <li><a  href="Fertilizzazione.php">Fertlizzazione</a></li>
                           <li><a  href="Proprieta_ortaggi.php">Propietà ortaggi</a></li>
+                          
                           <li><a  href="Accessori_utili.php">Accessori utili</a></li>
                       </ul>
                   </li>
@@ -450,7 +446,7 @@ In base al secondo criterio, applicato fondamentalmente per i concimi chimici, i
                         </div><!-- / calendar -->
                       
                   </div> <!-- /col-lg-3 -->
-               <!--/row -->
+               <! --/row -->
           </section>
       </section>
 </section>
