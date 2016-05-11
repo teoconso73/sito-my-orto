@@ -29,6 +29,19 @@ header('Location: login.php');
     <link href="assets/css/style-responsive.css" rel="stylesheet">
 
     <script src="assets/js/chart-master/Chart.js"></script>
+	<script src="assets/js/notify.js"></script>	
+	<?php
+
+if(isset($_SESSION["temperatura"]) && $_SESSION["temperatura"]<30)
+echo '<script type="text/javascript">';
+echo 'var temp=';
+echo json_encode($_SESSION["temperatura"]);
+echo ';
+      notifyMe(temp);
+      </script>';
+
+?>
+
     
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -346,7 +359,7 @@ header('Location: login.php');
     <!--script for this page-->
     <script src="assets/js/sparkline-chart.js"></script>    
 	<script src="assets/js/zabuto_calendar.js"></script>
-	<script src="assets/js/notify.js"></script>	
+	
 	
 	
 	

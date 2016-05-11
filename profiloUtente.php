@@ -723,6 +723,63 @@ echo '<div style="margin-left:-85px;margin-bottom:5%;"><img class="imgProfilo" s
             console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
         }
     </script>
+	
+	      <script>
+        
+var redirectTimer = (function() {
+    var my = {
+        debug: false,
+        secondsBeforeRedirect: 1000000,
+        init: function () {
+            var that = this;
+            
+            that.startTimer();
+
+            that.events();
+        },
+
+        events: function () {
+            var that = this;
+            $(document).on('mousemove', function(e) {    //per evento rotellina mouse document.onmousedown
+                that.resetTimer(e);
+            });
+        },
+
+        redirect: function () {
+            window.location.href = 'lock_screen.php';
+        },
+        
+        startTimer: function() {
+            var that = this;
+
+            if (that.debug) {
+                console.log("Timer is starting!");
+            }
+
+            that.timer = window.setTimeout(function () {
+                that.redirect();
+            }, that.secondsBeforeRedirect);
+        },
+
+        resetTimer: function (e) {
+            var that = this;
+
+            if (that.debug) {
+                console.log("Reset timer!");
+            }
+            window.clearTimeout(that.timer)
+            that.startTimer();
+        }
+
+    }
+
+    $(function () {
+        my.init();
+    });
+    
+    return ;
+})();
+    </script>
   
 
   </body>

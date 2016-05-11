@@ -100,7 +100,7 @@ echo '<font color="red" size="5">Password errata!</font>';
 				          <!-- modal -->
 		  				
 		  				
-	  				</div><! --/lock-screen -->
+	  				</div><!--/lock-screen -->
 	  			</div><!-- /col-lg-4 -->
 	  	
 	  	</div><!-- /container -->

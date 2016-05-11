@@ -20,7 +20,7 @@ var test=true;
     });
 
     notification.onclick = function () {
-      window.open("http://project0101.altervista.org/profiloUtente.php");      
+      window.open("profiloUtente.php");      
     };
 
   }

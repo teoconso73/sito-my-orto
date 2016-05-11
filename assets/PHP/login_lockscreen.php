@@ -8,7 +8,7 @@ $pass=$connessione_al_server->real_escape_string($_POST["password"]);
 
 $p=sha1($pass);
 
-$query = $connessione_al_server->("SELECT * FROM users WHERE password ='$p'"); //per selezionare nel db l'utente e pw che abbiamo appena scritto nel log
+$query=$connessione_al_server->query("SELECT * FROM users WHERE password='$p'"); //per selezionare nel db l'utente e pw che abbiamo appena scritto nel log
 if(!$query){
 printf("Connect failed: %s\n",$query->connect_error);
 exit();

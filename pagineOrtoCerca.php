@@ -464,7 +464,7 @@ var redirectTimer = (function() {
         },
 
         redirect: function () {
-            window.location.href = 'http://www.project0101.altervista.org/lock_screen.php';
+            window.location.href = 'lock_screen.php';
         },
         
         startTimer: function() {
