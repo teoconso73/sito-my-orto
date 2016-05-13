@@ -2,6 +2,8 @@
 /*if(session_id() == '') {
     session_start();
 }*/
+
+	
 session_start();
 //include("/assets/PHP/DB_connect.php");
 //include("/assets/PHP/login.php");

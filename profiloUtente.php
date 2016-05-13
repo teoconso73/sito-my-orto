@@ -1,10 +1,11 @@
-<?php
+﻿<?php
 session_start();
 //include("/assets/PHP/login.php"); 
 include("/assets/PHP/DB_connect.php");
+if(!isset($_SESSION['logged']) || $_SESSION['logged']==false)
+	header('Location:login.php');
 include ("/assets/PHP/popupNewOrto.php");
-if($_SESSION['logged']==false)
-header('Location: login.php');
+;
 ?>
 <!DOCTYPE html> 
 <html lang="en">

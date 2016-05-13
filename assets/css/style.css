@@ -1192,9 +1192,9 @@ PANELS CONFIGURATIONS
 }
 .weather-2 .weather-2-header {
 	background: #54bae6;
-	padding-top: 5px;
-	margin-bottom: 5px;
-}
+	padding-top: 3px;
+	padding-bottom: 3px;
+	}
 .weather-2 .weather-2-header p {
 	color: white;
 	margin-left: 5px;
@@ -2284,7 +2284,7 @@ label {
  }
 
 .modificaDatiUtente{
-margin-left: 10%;
+margin-left: 10px;
  display: inline-block;
   width: 70%;
   height: 34px;
@@ -2298,7 +2298,10 @@ margin-left: 10%;
   border-radius: 10px;
 }
 .labelUtente{
-width:10%;
+display: inline-block;
+padding:5px;
+margin-left:10px;
+width:25%;
 }
 
 .caselleTabellaOrti{
@@ -2363,3 +2366,73 @@ box-shadow: 3px 4px 2px rgba(102, 103, 100, 0.55);
 .pn:hover{
 box-shadow: 4px 4px 2px rgba(102, 103, 101, 0.69);
 }
+.meteo-orto{
+width:200px;
+margin-top:-80px;
+margin-left:37%;
+box-shadow: 3px 4px 2px rgba(102, 103, 100, 0.55);
+}
+.numero-piante{
+    width: 150px;
+display: block;
+    margin-top: -105px;
+    margin-bottom: 101px;
+    margin-left: 850px;
+	}
+.bott-piante{
+background-color:transparent;
+border:0px;
+border-radius:50%;
+}
+.pianta-off{
+display:none;
+}
+.pianta-on{
+display:inline-grid;
+}
+.destra{
+transform: rotate(270deg);
+}
+.giu{
+transform: rotate(0deg);
+}
+.select-inserisci{
+  margin-left:10;
+    width: 150;
+    height: 32;
+    background-color: rgba(84, 186, 230, 0.12);;
+    -webkit-border-radius: 4px;
+    color: black;
+}
+.select-inserisci:hover{
+    box-shadow: 0 1px 1px rgba(0, 16, 128, 0.22);
+cursor: pointer;
+
+}
+.btn-add-pianta{
+color: #fff;
+    background-color: #967adc;
+    border-color: #967adc;
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+	margin-left: 5;
+}
+.btn-add-pianta:hover{
+background-color: #ac92ec;
+}
+
