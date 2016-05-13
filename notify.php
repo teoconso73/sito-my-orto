@@ -29,6 +29,19 @@ header('Location: login.php');
     <link href="assets/css/style-responsive.css" rel="stylesheet">
 
     <script src="assets/js/chart-master/Chart.js"></script>
+	<script src="assets/js/notify.js"></script>	
+	<?php
+
+if(isset($_SESSION["temperatura"]) && $_SESSION["temperatura"]<30)
+echo '<script type="text/javascript">';
+echo 'var temp=';
+echo json_encode($_SESSION["temperatura"]);
+echo ';
+      notifyMe(temp);
+      </script>';
+
+?>
+
     
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -208,11 +221,14 @@ header('Location: login.php');
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
 			 			  <?php
-              $connessione_al_server=mysql_connect("localhost","root","");
-			  mysql_select_db("my_project0101",$connessione_al_server);
+              include("assets/PHP/DB_connect.php");
               $iduser=$_SESSION['ID_utente']; //oppure $_SESSION['ID_UTENTE']  ISSET..... S SESSION ID UTENTE è DA SETTARE NELL ALTRO FILe(DI LOGIN) O IL FILE CHE SARà
-              $sql=mysql_query("SELECT * FROM users WHERE ID_utente='$iduser'")or DIE('query non riuscita'.mysql_error());
-			  $result=mysql_fetch_assoc($sql);
+              $sql=$connessione_al_server->query("SELECT * FROM users WHERE ID_utente='$iduser'");
+			  if(!$sql){
+				printf("Connect failed: %s\n",$sql->connect_error);
+				exit();
+				}
+			  $result=$sql->fetch_assoc();
               $username=$result['username'];
 				//echo '<p="centered"><a href="profile.html"><img src="data:image/jpeg;base64,'.base64_encode( $result['avatar'] ).'"class="img-circle" width="60"</a></p>/>';
 			echo '<div style=margin-left:25%; text-align:center"><a href="profiloUtente.php"><img src="data:image/jpeg;base64,'.base64_encode( $result['avatar'] ).'" class="img-circle" width="100"/> </div>';
@@ -343,7 +359,7 @@ header('Location: login.php');
     <!--script for this page-->
     <script src="assets/js/sparkline-chart.js"></script>    
 	<script src="assets/js/zabuto_calendar.js"></script>
-	<script src="assets/js/notify.js"></script>	
+	
 	
 	
 	
