@@ -38,7 +38,12 @@ if(!isset($_SESSION['logged']) || $_SESSION['logged']==false)
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/style-responsive.css" rel="stylesheet">
 
-    <script src="assets/js/chart-master/Chart.js"></script>
+	<!--prova-->
+
+        
+        
+ 
+ <script src="assets/js/chart-master/Chart.js"></script>
 	
 	    <!-- js placed at the end of the document so the pages load faster -->
     <script src="assets/js/jquery.js"></script>
@@ -93,142 +98,7 @@ if(!isset($_SESSION['logged']) || $_SESSION['logged']==false)
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
                 <!--  notification start -->
-                <ul class="nav top-menu">
-                    <!-- settings start -->
-                    <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
-                            <i class="fa fa-file-text-o"></i>
-                            <span class="badge bg-theme">x</span>
-                        </a>
-                        <ul class="dropdown-menu extended tasks-bar">
-                            <div class="notify-arrow notify-arrow-green"></div>
-                            <li>
-                                <p class="green">You have 4 pending tasks</p>
-                            </li>
-                            <li>
-                                <a href="index.html#">
-                                    <div class="task-info">
-                                        <div class="desc">DashGum Admin Panel</div>
-                                        <div class="percent">40%</div>
-                                    </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                                            <span class="sr-only">40% Complete (success)</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="index.html#">
-                                    <div class="task-info">
-                                        <div class="desc">Database Update</div>
-                                        <div class="percent">60%</div>
-                                    </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                            <span class="sr-only">60% Complete (warning)</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="index.html#">
-                                    <div class="task-info">
-                                        <div class="desc">Product Development</div>
-                                        <div class="percent">80%</div>
-                                    </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                                            <span class="sr-only">80% Complete</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="index.html#">
-                                    <div class="task-info">
-                                        <div class="desc">Payments Sent</div>
-                                        <div class="percent">70%</div>
-                                    </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
-                                            <span class="sr-only">70% Complete (Important)</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="external">
-                                <a href="#">See All Tasks</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- settings end -->
-                    <!-- inbox dropdown start-->
-                    <li id="header_inbox_bar" class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
-                            <i class="fa fa-bullhorn"></i>
-                            <span class="badge bg-theme">y</span>
-                        </a>
-                        <ul class="dropdown-menu extended inbox">
-                            <div class="notify-arrow notify-arrow-green"></div>
-                            <li>
-                                <p class="green">You have 5 new messages</p>
-                            </li>
-                            <li>
-                                <a href="index.html#">
-                                    <span class="photo"><img alt="avatar" src="assets/img/ui-zac.jpg"></span>
-                                    <span class="subject">
-                                    <span class="from">Zac Snider</span>
-                                    <span class="time">Just now</span>
-                                    </span>
-                                    <span class="message">
-                                        Hi mate, how is everything?
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="index.html#">
-                                    <span class="photo"><img alt="avatar" src="assets/img/ui-divya.jpg"></span>
-                                    <span class="subject">
-                                    <span class="from">Divya Manian</span>
-                                    <span class="time">40 mins.</span>
-                                    </span>
-                                    <span class="message">
-                                     Hi, I need your help with this.
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="index.html#">
-                                    <span class="photo"><img alt="avatar" src="assets/img/ui-danro.jpg"></span>
-                                    <span class="subject">
-                                    <span class="from">Dan Rogers</span>
-                                    <span class="time">2 hrs.</span>
-                                    </span>
-                                    <span class="message">
-                                        Love your new Dashboard.
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="index.html#">
-                                    <span class="photo"><img alt="avatar" src="assets/img/ui-sherman.jpg"></span>
-                                    <span class="subject">
-                                    <span class="from">Dj Sherman</span>
-                                    <span class="time">4 hrs.</span>
-                                    </span>
-                                    <span class="message">
-                                        Please, answer asap.
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="index.html#">See all messages</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- inbox dropdown end -->
-                </ul>
+                
                 <!--  notification end -->
             </div>
             <div class="top-menu">
@@ -279,22 +149,20 @@ if(!isset($_SESSION['logged']) || $_SESSION['logged']==false)
                           <i class="fa fa-pagelines"></i>
                           <span>I miei orti</span>
                       </a>
-                      <ul class="sub">
-                     <?php //STAMPO IL NOME DEI MIEI ORTI
+                      <ul class="sub"> 
+                           <?php //STAMPO IL NOME DEI MIEI ORTI
                            $query = $connessione_al_server->query("select * from orto where ID_utente=$iduser");
                            while($cicle=$query->fetch_array(MYSQLI_ASSOC)){
                            $idOrto=$cicle['ID_orto'];
                            echo "<li><a  href='paginaOrto.php?id=$idOrto'>".$cicle['nome']."</a></li>";
                            }
                            ?>
-						  <li><a  href="general.html">General</a></li>
-                          <li><a  href="buttons.html">Buttons</a></li>
-                          <li><a  href="panels.html">Panels</a></li>
-						  <li><a  data-toggle="modal" href="#popupNewOrto">Nuovo Orto <i class="fa fa-plus" style="font-size: 8px;"></i></a></li>
+                          
+                          <li><a  data-toggle="modal" href="#popupNewOrto">Nuovo Orto <i class="fa fa-plus" style="font-size: 8px;"></i></a></li>
                       </ul>
-                  
+                  </li>
 
-                  <li class="sub-menu">
+                  <!--<li class="sub-menu">
                       <a href="javascript:;" >
                           <i class="fa fa-cogs"></i>
                           <span>Components</span>
@@ -340,8 +208,8 @@ if(!isset($_SESSION['logged']) || $_SESSION['logged']==false)
                           <i class="fa fa-info-circle"></i>                         
                          <span>Info</span>
                      </a>
-                  </li>
-                       <li class="sub-menu">
+                  </li>-->
+                  <li class="sub-menu">
                       <a href="javascript:;" >
                           <i class="fa fa-th"></i>
                           <span>Guide</span>
@@ -351,11 +219,8 @@ if(!isset($_SESSION['logged']) || $_SESSION['logged']==false)
                           <li><a  href="Fertilizzazione.php">Fertlizzazione</a></li>
                           <li><a  href="Proprieta_ortaggi.php">Propietà ortaggi</a></li>
                           
-                          <li><a  href="Accessori_utili.php">Accessori utili</a></li>
+                          <li><a  href="attrezzi.php">Accessori utili</a></li>
                       </ul>
-                  </li>
-
-              </ul>
               <!-- sidebar menu end-->
           </div>
       </aside>
@@ -400,13 +265,12 @@ $_SESSION["descrizione"]=$descrizione;
 $nome=$json['name'];
 $umidita=$json['main']['humidity'];
 echo '<div class="col-lg-4 col-md-4 col-sm-4 mb">
-							<div class="weather-3 pn centered">
-							<img style="width:50px;height:50px"src="http://openweathermap.org/img/w/'.$json['weather'][0]['icon'].'.png"</img>';
-							if($json["weather"][0]["main"]=="Clear")
+							<div class="weather-3 pn centered">';
+							
 								echo '<i class="fa fa-sun-o"></i></i>';
-							else echo '<i class="fa fa-cloud"></i>';
+							
 								echo '<h1>'.$temperatura.'° C</h1>
-								<div style="height:82px;" class="info">
+								<div style="height:91px;" class="info">
 									<div class="row">
 											<h3 class="centered">'.$nome.'</h3>
 										<div class="col-sm-6 col-xs-6 pull-left">
@@ -420,37 +284,55 @@ echo '<div class="col-lg-4 col-md-4 col-sm-4 mb">
 							</div>
 						</div>';
 
-?>          
+?>   
 
+       		<div class="contenitore-guide">
+			<div class="casella">
+			<div class="titoli-guide">
+			<span>Irrigazione</span>
+			</div>
+			<img src="assets2/images/irrigatori.jpg" width="190" height="170" >
+			<div class="link-guide">
+               <a href="#" onclick="location.href='Irrigazione.php'" style="color:white" >Vai alla pagina</a>
+			   </div>
+            </div>
+			
+			<div class="casella">
+			<div class="titoli-guide">
+			<span>fertilizzazione</span>
+			</div>
+			<img src="assets2/images/concime.jpg" width="190" height="170" >
+			<div class="link-guide">
+               <a href="#" onclick="location.href='fertilizzazione.php'" style="color:white" >Vai alla pagina</a>
+			   </div>
+            </div>
+			
+			<div class="casella">
+			<div class="titoli-guide">
+			<span>proprietà ortaggi</span>
+			</div>
+			<img src="assets2/images/ortaggi.jpg" width="190" height="170" >
+			<div class="link-guide">
+               <a href="#" onclick="location.href='proprieta_ortaggi.php'" style="color:white" >Vai alla pagina</a>
+			   </div>
+            </div>
+			
+			<div class="casella">
+			<div class="titoli-guide">
+			<span>attrezzi</span>
+			</div>
+			<img src="assets2/images/AttrezziGiardino.jpg" width="190" height="170" >
+			<div class="link-guide">
+               <a href="#" onclick="location.href='attrezzi.php'" style="color:white" >Vai alla pagina</a>
+			   </div>
+            </div>
+			
+			</div>
 					
                  
                   
                   
-      <!-- **********************************************************************************************************************************************************
-      RIGHT SIDEBAR CONTENT
-      *********************************************************************************************************************************************************** -->                  
-                  
-                  <div class="col-lg-3 ds">
-                    <!--COMPLETED ACTIONS DONUTS CHART-->
-						
-                    
-                      
-                        <!-- CALENDAR-->
-                        <div id="calendar" class="mb">
-                            <div class="panel green-panel no-margin">
-                                <div class="panel-body">
-                                    <div id="date-popover" class="popover top" style="cursor: pointer; disadding: block; margin-left: 33%; margin-top: -50px; width: 175px;">
-                                        <div class="arrow"></div>
-                                        <h3 class="popover-title" style="disadding: none;"></h3>
-                                        <div id="date-popover-content" class="popover-content"></div>
-                                    </div>
-                                    <div id="my-calendar"></div>
-                                </div>
-                            </div>
-                        </div><!-- / calendar -->
-                      
-                  </div> <!-- /col-lg-3 -->
-               <! --/row -->
+   
           </section>
       </section>
 </section>

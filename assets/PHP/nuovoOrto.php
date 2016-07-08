@@ -32,7 +32,7 @@ while ($row=mysql_fetch_array($idOrto))
    $idOrto1=$row['ID_orto'];
 }
 echo $idOrto1;
-header ("Location: Progetto/paginaOrto.php?id=$idOrto1");
+header ("Location: /Progetto/paginaOrto.php?id=$idOrto1");
 }
 
 

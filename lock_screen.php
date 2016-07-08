@@ -90,8 +90,7 @@ echo '<font color="red" size="5">Password errata!</font>';
 				
 				                      </div>
 				                      <div class="modal-footer centered">
-				                          <button data-dismiss="modal" class="btn btn-theme04" type="button">Cancel</button>
-				                          <button class="btn btn-theme03" type="submit">Login</button>
+				                        <button class="btn btn-theme03" type="submit">Login</button>
 				                      </div>
 									  </form>
 				                  </div>

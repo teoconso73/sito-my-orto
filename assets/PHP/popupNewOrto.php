@@ -6,7 +6,7 @@
 <div class="modal-header"><button class="close" type="button" data-dismiss="modal" onclick="document.getElementById('popupNewOrto').style.display='none'">x</button>
 <h4 class="modal-title">Nuovo orto</h4>
 </div>
-<form method='GET' action='Progetto/assets/PHP/nuovoOrto.php'>
+<form method='GET' action='assets/PHP/nuovoOrto.php'>
 <div class="panel-body">
 <div class="task-content">
   <ul class="task-list">

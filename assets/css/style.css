@@ -121,6 +121,7 @@ a, a:hover, a:focus {
 }
 
 .btn-theme03 {
+
   color: #fff;
   background-color: #48cfad;
   border-color: #37bc9b;
@@ -2435,4 +2436,39 @@ color: #fff;
 .btn-add-pianta:hover{
 background-color: #ac92ec;
 }
+.contenitore-guide{
+margin-top:320px;
+height:auto;
+position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+	display: block; width: auto; left: 0px; transition: all 0ms ease; transform: translate3d(0px, 0px, 0px);
+}
+.casella{
+display:inline-block;
+padding:10px;
+}
+
+.titoli-guide{
+vertical-align: baseline;
+    color: white;
+    background-color: #9ed034;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 600;
+    height: 30px;
+    text-align: center;
+	}
+.link-guide{
+    display: block;
+    background-color: #9ed034;
+    font-color: white;
+    padding: 6px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 5px;
+	}	
 
